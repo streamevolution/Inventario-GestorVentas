@@ -110,7 +110,7 @@
         /* ESTILOS TPV (POS) */
         /* ---------------------------------------------------------------------- */
         .pos-full-screen { @apply h-screen flex flex-col; overflow: hidden; }
-        .pos-grid-container { @apply flex-1 grid overflow-hidden; grid-template-columns: 1fr; }
+        .pos-grid-container { @apply flex-1 grid; grid-template-columns: 1fr; }
         @media (min-width: 1024px) { .pos-grid-container { grid-template-columns: 2fr 1fr; } }
         
         .pos-product-card {
@@ -122,7 +122,7 @@
         .pos-scrollbar::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 4px; }
         .pos-scrollbar::-webkit-scrollbar-track { background-color: #f9fafb; }
         
-        .pos-main-content-wrapper { @apply flex flex-col h-full overflow: hidden; }
+        .pos-main-content-wrapper { @apply flex flex-col h-full; }
         .pos-scroll-area { @apply flex-1 overflow-y-auto; }
         
         /* ---------------------------------------------------------------------- */
@@ -142,11 +142,6 @@
             @apply text-lg font-medium text-gray-700;
         }
 
-        /* Selectores de color (swatches) */
-        .theme-swatch {
-            @apply w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition;
-        }
-        
         /* Colores de los swatches */
         .swatch-azul { background-color: #4f46e5; }
         .swatch-rosa { background-color: #ec4899; }
@@ -182,11 +177,11 @@
                 
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Personalización</h3>
-                    <button class="btn-profile-link" onclick="openThemeModal()">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-teal-500 hover:bg-teal-600 text-white font-semibold shadow-md transition duration-150" onclick="openThemeModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                         </svg>
-                        <span>Seleccionar Tema</span>
+                        <span class="text-lg font-semibold text-white">Seleccionar Tema</span>
                     </button>
                 </div>
 
@@ -198,7 +193,7 @@
                             <span>Síguenos en Facebook</span>
                         </button>
                         <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:opacity-90 text-white font-semibold shadow-md transition duration-150" onclick="window.open('https://instagram.com', '_blank')">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.053 1.805.247 2.227.421.56.22 1.003.504 1.448.95.446.446.73.888.95 1.448.174.422.368 1.057.421 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.053 1.17-.247 1.805-.421 2.227-.22.56-.504 1.003-.95 1.448-.446.446-.888.73-1.448.95-.422.174-1.057.368-2.227.421-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.053-1.805-.247-2.227-.421-.56-.22-1.003-.504-1.448-.95-.446-.446-.73-.888-.95-1.448-.174-.422-.368-1.057-.421-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.053-1.17.247 1.805.421-2.227.22-.56.504-1.003.95-1.448.446.446.888.73 1.448.95.422-.174-1.057.368-2.227.421C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.17 0-3.515.012-4.74.068-1.107.05-1.666.236-1.993.364-.403.15-.71.35-1.02.66-.31.31-.51.618-.66 1.02-.128.327-.314.886-.364 1.993-.056 1.225-.068 1.57-.068 4.74s.012 3.515.068 4.74c.05 1.107.236 1.666.364 1.993.15.403.35.71.66 1.02.31.31.618.51 1.02.66.327.128.886.314 1.993.364 1.225.056 1.57.068 4.74.068s3.515-.012 4.74-.068c1.107-.05 1.666-.236 1.993-.364.403-.15.71-.35 1.02-.66.31-.31.51-.618-.66-1.02.128-.327-.314.886-.364-1.993.056-1.225.068-1.57.068-4.74s-.012-3.515-.068-4.74c-.05-1.107-.236-1.666-.364-1.993-.15-.403-.35.71-.66-1.02-.31-.31-.618-.51-1.02-.66-.327-.128-.886-.314-1.993-.364C15.515 3.793 15.17 3.783 12 3.783zM12 7.88a4.12 4.12 0 100 8.24 4.12 4.12 0 000-8.24zM12 14.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM18.192 5.25a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" /></svg>
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.053 1.805.247 2.227.421.56.22 1.003.504 1.448.95.446.446.73.888.95 1.448.174.422.368 1.057.421 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.053 1.17-.247 1.805-.421 2.227-.22.56-.504 1.003-.95 1.448-.446.446-.888.73-1.448.95-.422.174-1.057.368-2.227.421-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.053-1.805-.247-2.227-.421-.56-.22-1.003-.504-1.448-.95-.446.446-.73-.888-.95-1.448-.174-.422-.368-1.057-.421-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.053 1.17.247 1.805.421-2.227.22-.56.504-1.003.95-1.448.446.446.888.73 1.448.95.422-.174-1.057.368-2.227.421C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.17 0-3.515.012-4.74.068-1.107.05-1.666.236-1.993.364-.403.15-.71.35-1.02.66-.31.31-.51.618-.66 1.02-.128.327-.314.886-.364 1.993-.056 1.225-.068 1.57-.068 4.74s.012 3.515.068 4.74c.05 1.107.236 1.666.364 1.993.15.403.35.71.66 1.02.31.31.618.51 1.02.66.327.128.886.314 1.993.364 1.225.056 1.57.068 4.74.068s3.515-.012 4.74-.068c1.107-.05 1.666-.236 1.993-.364.403-.15.71.35 1.02-.66.31-.31.51-.618-.66-1.02.128-.327-.314.886-.364-1.993.056-1.225.068-1.57.068-4.74s-.012-3.515-.068-4.74c-.05-1.107-.236-1.666-.364-1.993-.15-.403-.35.71-.66-1.02-.31-.31-.618-.51-1.02-.66-.327-.128-.886-.314-1.993-.364C15.515 3.793 15.17 3.783 12 3.783zM12 7.88a4.12 4.12 0 100 8.24 4.12 4.12 0 000-8.24zM12 14.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM18.192 5.25a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" /></svg>
                             <span>Síguenos en Instagram</span>
                         </button>
                     </div>
@@ -218,17 +213,17 @@
             </div>
             
             <div id="theme-options-grid" class="grid grid-cols-6 gap-4">
-                <button class="theme-swatch swatch-azul" onclick="applyTheme('azul')" title="Azul (Defecto)"></button>
-                <button class="theme-swatch swatch-rosa" onclick="applyTheme('rosa')" title="Rosa"></button>
-                <button class="theme-swatch swatch-rojo" onclick="applyTheme('rojo')" title="Rojo"></button>
-                <button class="theme-swatch swatch-morado" onclick="applyTheme('morado')" title="Morado"></button>
-                <button class="theme-swatch swatch-amarillo" onclick="applyTheme('amarillo')" title="Amarillo"></button>
-                <button class="theme-swatch swatch-verde" onclick="applyTheme('verde')" title="Verde"></button>
-                <button class="theme-swatch swatch-anaranjado" onclick="applyTheme('anaranjado')" title="Anaranjado"></button>
-                <button class="theme-swatch swatch-turquesa" onclick="applyTheme('turquesa')" title="Turquesa"></button>
-                <button class="theme-swatch swatch-beige" onclick="applyTheme('beige')" title="Beige"></button>
-                <button class="theme-swatch swatch-gris" onclick="applyTheme('gris')" title="Gris"></button>
-                <button class="theme-swatch swatch-obscuro" onclick="applyTheme('obscuro')" title="Obscuro"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-azul" onclick="applyTheme('azul')" title="Azul (Defecto)"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-rosa" onclick="applyTheme('rosa')" title="Rosa"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-rojo" onclick="applyTheme('rojo')" title="Rojo"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-morado" onclick="applyTheme('morado')" title="Morado"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-amarillo" onclick="applyTheme('amarillo')" title="Amarillo"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-verde" onclick="applyTheme('verde')" title="Verde"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-anaranjado" onclick="applyTheme('anaranjado')" title="Anaranjado"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-turquesa" onclick="applyTheme('turquesa')" title="Turquesa"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-beige" onclick="applyTheme('beige')" title="Beige"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-gris" onclick="applyTheme('gris')" title="Gris"></button>
+                <button class="w-10 h-10 md:w-12 md:h-12 rounded-full cursor-pointer border-2 border-gray-200 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition swatch-obscuro" onclick="applyTheme('obscuro')" title="Obscuro"></button>
             </div>
         </div>
     </div>
@@ -259,15 +254,14 @@
             <form id="product-form">
                 <input type="hidden" id="product-item-id">
                 <div class="mb-4"><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label><input type="text" id="name" required class="input-style"></div>
+                
                 <div class="mb-4">
                     <label for="barcode" class="block text-sm font-medium text-gray-700 mb-1">Código de Barras (Opcional)</label>
-                    <div class="flex space-x-2">
-                        <input type="text" id="barcode" class="input-style flex-grow" placeholder="Ej: 7701234567890">
-                        <button type="button" id="scan-barcode-btn" onclick="openScannerModal('product')" class="bg-primary-500 text-white w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg shadow-md hover:bg-primary-600 transition" title="Escanear Código">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7V4h3m0 0h5m-5 0v3m0-3h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5M10 7V4h3m0 0h5m-5 0v3m0-3h5m-5 0v3m-5 0h5m-5 0v3M10 10v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M4 10v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M10 16v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M4 16v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3" /></svg>
-                        </button>
+                    <div>
+                        <input type="text" id="barcode" class="input-style w-full" placeholder="Ej: 7701234567890">
                     </div>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div><label for="category" class="block text-sm font-medium text-gray-700 mb-1">Categoría</label><input type="text" id="category" required class="input-style"></div>
                     <div><label for="stock" class="block text-sm font-medium text-gray-700 mb-1">Stock</label><input type="number" id="stock" required min="0" class="input-style"></div>
@@ -327,6 +321,62 @@
         </div>
     </div>
     
+    <div id="start-session-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50 p-4" onclick="closeModal(event, 'start-session-modal')">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 md:p-8" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Iniciar Nueva Venta</h2>
+            <form id="start-session-form" onsubmit="handleStartSession(event)">
+                <div class="mb-6">
+                    <label for="session-name" class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Sesión (Ej: Turno Mañana)</label>
+                    <input type="text" id="session-name" required class="input-style" placeholder="Venta del Lunes">
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" onclick="closeModal(null, 'start-session-modal')" class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Cancelar</button>
+                    <button type="submit" class="btn-primary bg-green-500 hover:bg-green-600">Iniciar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="close-session-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50 p-4" onclick="closeModal(event, 'close-session-modal')">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 md:p-8" onclick="event.stopPropagation()">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Cerrar Venta del Día</h2>
+            <p class="text-gray-600 mb-6">Se archivará la sesión <strong id="close-session-name" class="text-primary-500"></strong>. ¿Estás seguro?</p>
+            <div class="bg-gray-50 rounded-lg p-4 space-y-2 mb-6 border">
+                <div class="flex justify-between font-medium"><span class="text-gray-600">Total de Ventas:</span><span id="close-session-total" class="text-gray-800">$0.00</span></div>
+                <div class="flex justify-between font-medium"><span class="text-gray-600">N° de Transacciones:</span><span id="close-session-count" class="text-gray-800">0</span></div>
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button type="button" onclick="closeModal(null, 'close-session-modal')" class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Cancelar</button>
+                <button type="button" onclick="confirmCloseSession()" class="btn-primary bg-red-500 hover:bg-red-600">Sí, Cerrar Venta</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="session-details-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50 p-4" onclick="closeModal(event, 'session-details-modal')">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl p-6 md:p-8" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h2 class="text-2xl font-bold text-gray-800">Detalle de Sesión: <span id="session-details-title" class="text-primary-500"></span></h2>
+                <button onclick="closeModal(null, 'session-details-modal')" class="text-gray-400 hover:text-gray-600 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="session-details-summary" class="bg-gray-50 rounded-lg p-4 space-y-2 mb-6 border">
+                </div>
+            
+            <h3 class="text-lg font-semibold text-gray-700 mb-3">Transacciones</h3>
+            <div class="max-h-[60vh] overflow-y-auto pr-2 pos-scrollbar">
+                <ul id="session-details-list" class="space-y-3">
+                    </ul>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button type="button" onclick="closeModal(null, 'session-details-modal')" class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Cerrar</button>
+            </div>
+        </div>
+    </div>
     <div id="message-box" class="space-y-3">
         </div>
 
@@ -348,7 +398,10 @@
                 cart: {}, 
                 productSearch: '', 
                 currentPOSView: 'dashboard',
-                transactions: [], 
+                // --- CAMBIO: ESTRUCTURA DE VENTAS ---
+                salesSessions: [], // Almacena todas las sesiones
+                activeSessionId: null, // ID de la sesión activa
+                // --- FIN CAMBIO ---
                 allProducts: []
             }
         };
@@ -370,11 +423,21 @@
                 window.appState.products = prodData ? JSON.parse(prodData) : {};
                 const histData = localStorage.getItem(HISTORY_KEY);
                 window.appState.history = histData ? JSON.parse(histData) : {};
+                // --- CAMBIO: Cargar sesiones de venta ---
                 const posData = localStorage.getItem(POS_KEY);
                 if (posData) {
                     const parsedPos = JSON.parse(posData);
-                    window.appState.pos.transactions = parsedPos.transactions || [];
+                    window.appState.pos.salesSessions = parsedPos.salesSessions || [];
+                    window.appState.pos.activeSessionId = parsedPos.activeSessionId || null;
+                    // Asegurarse de que no haya sesiones 'open' huérfanas al cargar
+                    if (window.appState.pos.activeSessionId) {
+                        const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
+                        if (!activeSession || activeSession.status !== 'open') {
+                            window.appState.pos.activeSessionId = null;
+                        }
+                    }
                 }
+                // --- FIN CAMBIO ---
                 updateAllProductsForPOS();
             } catch (e) {
                 console.error("Error al cargar datos:", e);
@@ -387,7 +450,12 @@
                 localStorage.setItem(INVENTORIES_KEY, JSON.stringify(window.appState.inventories));
                 localStorage.setItem(PRODUCTS_KEY, JSON.stringify(window.appState.products));
                 localStorage.setItem(HISTORY_KEY, JSON.stringify(window.appState.history));
-                localStorage.setItem(POS_KEY, JSON.stringify({ transactions: window.appState.pos.transactions }));
+                // --- CAMBIO: Guardar sesiones de venta ---
+                localStorage.setItem(POS_KEY, JSON.stringify({ 
+                    salesSessions: window.appState.pos.salesSessions, 
+                    activeSessionId: window.appState.pos.activeSessionId 
+                }));
+                // --- FIN CAMBIO ---
                 if (window.appState.currentInventoryId) {
                     localStorage.setItem('currentInventoryId', window.appState.currentInventoryId);
                 } else {
@@ -403,26 +471,76 @@
         }
         
         // --- UTILIDADES ---
+        
+        // --- [INICIO] FUNCIÓN showToast MODIFICADA ---
         window.showToast = function(message, type = 'info') {
             const box = document.getElementById('message-box');
             let color = '';
             let toast = document.createElement('div');
-            const baseClasses = 'text-white p-4 rounded-lg shadow-xl mb-3 transition transform duration-300 ease-out translate-x-full opacity-0';
+            
+            // Clases base actualizadas para flex y botón de cierre
+            const baseClasses = 'text-white p-4 rounded-lg shadow-xl mb-3 transition transform duration-300 ease-out translate-x-full opacity-0 flex justify-between items-start';
+            
             if (type === 'success') color = 'bg-green-500';
             else if (type === 'error') color = 'bg-red-500';
             else if (type === 'warning') color = 'bg-yellow-500';
             toast.className = `${baseClasses} ${color}`;
+            
             if (type === 'info') {
                  const rootStyles = getComputedStyle(document.documentElement);
                  const primaryColor = rootStyles.getPropertyValue('--color-primary-500').trim();
                  if (primaryColor) toast.style.backgroundColor = primaryColor;
             }
-            toast.innerHTML = `<p class="font-bold">${type.charAt(0).toUpperCase() + type.slice(1)}:</p><p>${message}</p>`;
+
+            // Función para cerrar el toast
+            // Se define aquí para que el timeout y el botón puedan usarla.
+            const closeToast = () => {
+                if (!toast) return; // Ya se cerró
+                toast.classList.add('translate-x-full', 'opacity-0');
+                setTimeout(() => {
+                    if (toast && toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                    toast = null; // Limpiar referencia
+                }, 300); // Duración de la transición
+            };
+
+            // Timeout de auto-cierre (1 segundo)
+            const autoCloseTimeout = setTimeout(closeToast, 1000); // 1000ms = 1 segundo
+
+            // Contenido con botón de cerrar
+            toast.innerHTML = `
+                <div class="mr-3">
+                    <p class="font-bold">${type.charAt(0).toUpperCase() + type.slice(1)}:</p>
+                    <p>${message}</p>
+                </div>
+                <button class="font-bold text-xl p-0 leading-none hover:opacity-70" style="text-shadow: 0 1px 1px rgba(0,0,0,0.2);">
+                    &times;
+                </button>
+            `;
+            
+            // Añadir listener al botón de cerrar
+            const closeButton = toast.querySelector('button');
+            if (closeButton) {
+                closeButton.onclick = (e) => {
+                    e.stopPropagation();
+                    clearTimeout(autoCloseTimeout); // Cancelar el auto-cierre
+                    closeToast(); // Cerrar inmediatamente
+                };
+            }
+
             box.appendChild(toast);
-            setTimeout(() => { toast.classList.remove('translate-x-full', 'opacity-0'); toast.classList.add('translate-x-0', 'opacity-100'); }, 10);
-            setTimeout(() => { toast.classList.add('translate-x-full', 'opacity-0'); }, 5000);
-            setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 5300);
+            
+            // Mostrar el toast
+            setTimeout(() => {
+                if (toast) { // Comprobar si no se cerró antes de mostrarse
+                    toast.classList.remove('translate-x-full', 'opacity-0');
+                    toast.classList.add('translate-x-0', 'opacity-100');
+                }
+            }, 10);
         }
+        // --- [FIN] FUNCIÓN showToast MODIFICADA ---
+
         window.closeModal = function(event, modalId) {
             const modal = document.getElementById(modalId);
             if (!event || event.target.id === modalId) {
@@ -672,7 +790,8 @@
         window.openAddInventoryModal = function() {
             document.getElementById('inventory-modal-title').textContent = 'Crear Nuevo Inventario';
             document.getElementById('inventory-form').reset(); document.getElementById('inventory-item-id').value = '';
-            document.getElementById('inventory-modal').classList.remove('hidden'); document.getElementById('inventory-modal').classList.add('flex');
+            document.getElementById('inventory-modal').classList.remove('hidden');
+            document.getElementById('inventory-modal').classList.add('flex');
         }
         window.selectInventory = function(id) {
             window.appState.currentInventoryId = id; window.appState.currentView = 'inventory';
@@ -824,21 +943,176 @@
             if (viewName === 'pos_manager') { window.appState.pos.currentPOSView = 'dashboard'; window.appState.pos.productSearch = ''; }
             renderApp();
         }
-        window.updateSearchFilter = function(value) { window.appState.searchFilter = value; renderApp(); }
+        
+        // --- [INICIO] MODIFICACIÓN DE BUSCADORES ---
+        window.updateSearchFilter = function(value) {
+            // Guardar el estado del input
+            const input = document.getElementById('search-input');
+            const cursorPosition = input ? input.selectionStart : 0;
+            
+            // Actualizar el estado global
+            window.appState.searchFilter = value; 
+            
+            // Volver a renderizar, pasando el ID y la posición del cursor
+            renderApp('search-input', cursorPosition); 
+        }
         window.changePOSView = function(viewName) {
+            // --- CAMBIO: No permitir ir a productos si no hay sesión ---
+            if (viewName === 'products' && !window.appState.pos.activeSessionId) {
+                showToast('Primero debe iniciar una nueva sesión de venta.', 'warning');
+                return;
+            }
+            // --- FIN CAMBIO ---
             window.appState.pos.currentPOSView = viewName;
             if (viewName === 'products') window.appState.pos.productSearch = '';
             renderApp();
         }
 
         // --- LÓGICA DEL GESTOR DE VENTAS (POS) ---
+
+        // --- INICIO: NUEVAS FUNCIONES DE SESIÓN DE VENTA ---
+        window.openStartSessionModal = function() {
+            const openSession = window.appState.pos.salesSessions.find(s => s.status === 'open');
+            if (openSession) {
+                showToast('Error: Ya hay una sesión abierta. Ciérrela primero.', 'error');
+                return;
+            }
+            document.getElementById('start-session-form').reset();
+            document.getElementById('start-session-modal').classList.remove('hidden');
+            document.getElementById('start-session-modal').classList.add('flex');
+        }
+
+        window.handleStartSession = function(event) {
+            event.preventDefault();
+            const sessionName = document.getElementById('session-name').value.trim();
+            if (!sessionName) return showToast('Por favor, ingrese un nombre.', 'error');
+            
+            const openSession = window.appState.pos.salesSessions.find(s => s.status === 'open');
+            if (openSession) {
+                showToast('Error: Ya hay una sesión abierta. Ciérrela primero.', 'error');
+                return;
+            }
+
+            const newId = generateId();
+            const newSession = { 
+                id: newId, 
+                name: sessionName, 
+                timestamp: new Date().getTime(), 
+                status: 'open', 
+                transactions: [] 
+            };
+            
+            window.appState.pos.salesSessions.push(newSession);
+            window.appState.pos.activeSessionId = newId;
+            
+            saveData();
+            closeModal(null, 'start-session-modal');
+            renderApp();
+            showToast(`Sesión "${sessionName}" iniciada.`, 'success');
+        }
+
+        window.openCloseSessionModal = function() {
+            const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
+            if (!activeSession || activeSession.status !== 'open') {
+                showToast('No hay sesión activa para cerrar.', 'info');
+                return;
+            }
+
+            const totalSales = activeSession.transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
+            const numTransactions = activeSession.transactions.length;
+
+            document.getElementById('close-session-name').textContent = activeSession.name;
+            document.getElementById('close-session-total').textContent = `$${totalSales}`;
+            document.getElementById('close-session-count').textContent = numTransactions;
+
+            document.getElementById('close-session-modal').classList.remove('hidden');
+            document.getElementById('close-session-modal').classList.add('flex');
+        }
+
+        window.confirmCloseSession = function() {
+            const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
+            if (!activeSession) return;
+
+            activeSession.status = 'closed';
+            window.appState.pos.activeSessionId = null;
+            
+            saveData();
+            closeModal(null, 'close-session-modal');
+            renderApp();
+            showToast(`Sesión "${activeSession.name}" cerrada.`, 'success');
+        }
+
+        // --- [INICIO] NUEVA FUNCIÓN PARA MODAL DE DETALLE DE SESIÓN ---
+        window.openSessionDetailsModal = function(sessionId) {
+            const session = window.appState.pos.salesSessions.find(s => s.id === sessionId);
+            if (!session) {
+                return showToast('Error: No se pudo encontrar la sesión.', 'error');
+            }
+
+            // Popular título
+            document.getElementById('session-details-title').textContent = session.name;
+
+            // Popular resumen
+            const totalSales = session.transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
+            const numTransactions = session.transactions.length;
+            document.getElementById('session-details-summary').innerHTML = `
+                <div class="flex justify-between font-medium"><span class="text-gray-600">Ventas Totales:</span><span class="text-gray-800 text-lg font-bold">$${totalSales}</span></div>
+                <div class="flex justify-between font-medium"><span class="text-gray-600">N° de Transacciones:</span><span class="text-gray-800 text-lg font-bold">${numTransactions}</span></div>
+            `;
+
+            // Popular lista de transacciones
+            const listElement = document.getElementById('session-details-list');
+            if (session.transactions.length === 0) {
+                listElement.innerHTML = `<li class="p-4 text-center text-gray-500">No hay transacciones en esta sesión.</li>`;
+            } else {
+                const transactionsHTML = session.transactions
+                    .slice()
+                    .sort((a, b) => b.timestamp - a.timestamp) // Ordenar de más reciente a más antigua
+                    .map(t => {
+                        const time = new Date(t.timestamp).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+                        const itemsList = t.items.map(i => `<span class="text-xs text-gray-600 block">${i.quantity}x ${i.name}</span>`).join('');
+                        return `
+                            <li class="p-3 bg-white rounded-lg shadow-sm border border-gray-200">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <p class="text-sm font-semibold text-primary-600">Venta #${t.id.substring(0, 6)}...</p>
+                                        <p class="text-xs text-gray-400">${time}</p>
+                                    </div>
+                                    <span class="text-lg font-bold text-green-600">$${t.total}</span>
+                                </div>
+                                <div class="mt-2 pt-2 border-t border-gray-100">
+                                    ${itemsList}
+                                </div>
+                            </li>
+                        `;
+                    }).join('');
+                listElement.innerHTML = transactionsHTML;
+            }
+
+            // Abrir modal
+            document.getElementById('session-details-modal').classList.remove('hidden');
+            document.getElementById('session-details-modal').classList.add('flex');
+        }
+        // --- [FIN] NUEVA FUNCIÓN ---
+
+        // --- [INICIO] CAMBIO: IVA al 0% ---
         function calculatePOSTotals() {
             const cartItems = Object.values(window.appState.pos.cart);
             const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const tax = subtotal * 0.16; const total = subtotal + tax;
+            const tax = 0; // Se establece el IVA en 0
+            const total = subtotal + tax;
             return { subtotal: subtotal.toFixed(2), tax: tax.toFixed(2), total: total.toFixed(2) };
         }
+        // --- [FIN] CAMBIO ---
+
         window.addProductToCart = function(product, quantity = 1) {
+            // --- CAMBIO: Verificar sesión activa ---
+            if (!window.appState.pos.activeSessionId) {
+                showToast('No hay sesión de venta activa. Inicie una nueva.', 'error');
+                return;
+            }
+            // --- FIN CAMBIO ---
+
             const productId = product.id, cart = window.appState.pos.cart;
             const currentProduct = window.appState.pos.allProducts.find(p => p.id === productId && p.inventoryId === product.inventoryId);
             if (!currentProduct || currentProduct.stock <= 0) return showToast(`Stock agotado: ${product.name}`, 'warning');
@@ -863,11 +1137,21 @@
             renderApp();
         }
         window.processSale = function() {
+            // --- CAMBIO: Verificar y obtener sesión activa ---
+            const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
+            if (!activeSession) {
+                showToast('Error: No hay sesión de venta activa.', 'error');
+                return;
+            }
+            // --- FIN CAMBIO ---
+
             const cartItems = Object.values(window.appState.pos.cart);
             if (cartItems.length === 0) return showToast('El carrito está vacío.', 'error');
             if (!window.confirm || !window.confirm(`¿Confirmar venta por $${calculatePOSTotals().total}?`)) return;
+            
             const totals = calculatePOSTotals();
             const transaction = { id: generateId(), timestamp: new Date().getTime(), total: totals.total, subtotal: totals.subtotal, tax: totals.tax, items: cartItems.map(item => ({ ...item })) };
+            
             cartItems.forEach(cartItem => {
                 const invId = cartItem.inventoryId, products = window.appState.products[invId];
                 const index = products.findIndex(p => p.id === cartItem.id);
@@ -878,17 +1162,37 @@
                     window.appState.history[invId].push({ id: generateId(), type: 'SALIDA', itemId: cartItem.id, itemName: cartItem.name, details: `VENTA TPV: ${cartItem.quantity} unidades. Stock final: ${newStock}.`, timestamp: new Date().getTime() });
                 }
             });
-            window.appState.pos.transactions.push(transaction); window.appState.pos.cart = {};
-            saveData(); updateAllProductsForPOS();
+
+            // --- CAMBIO: Guardar transacción en la sesión activa ---
+            activeSession.transactions.push(transaction); 
+            // --- FIN CAMBIO ---
+            
+            window.appState.pos.cart = {};
+            saveData(); 
+            updateAllProductsForPOS();
             showToast(`Venta de $${totals.total} completada.`, 'success');
-            window.appState.pos.currentPOSView = 'sales'; renderApp();
+            
+            // Ir al dashboard para ver el resumen actualizado
+            window.appState.pos.currentPOSView = 'dashboard'; 
+            renderApp();
         }
         window.clearCart = function() {
              if (Object.keys(window.appState.pos.cart).length === 0) return;
              if (!window.confirm || !window.confirm(`¿Vaciar el carrito?`)) return;
             window.appState.pos.cart = {}; showToast('Carrito vaciado.', 'info'); renderApp();
         }
-        window.updatePOSSearchFilter = function(value) { window.appState.pos.productSearch = value; renderApp(); }
+        window.updatePOSSearchFilter = function(value) {
+            // Guardar el estado del input
+            const input = document.getElementById('pos-search-input');
+            const cursorPosition = input ? input.selectionStart : 0;
+
+            // Actualizar el estado global
+            window.appState.pos.productSearch = value;
+            
+            // Volver a renderizar, pasando el ID y la posición del cursor
+            renderApp('pos-search-input', cursorPosition);
+        }
+        // --- [FIN] MODIFICACIÓN DE BUSCADORES ---
 
         // --- RENDERING VIEWS ---
         const loginPageHTML = `<div id="login-page" class="flex items-center justify-center min-h-screen p-4 bg-gray-50"><div class="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl"><h1 class="text-3xl font-bold text-gray-800 text-center mb-6">Inventario Pro</h1><h2 class="text-xl text-center text-gray-600 mb-8">Iniciar Sesión</h2><form onsubmit="simulateLogin(event)"><div class="mb-5"><label for="login-username" class="block text-sm font-medium text-gray-700 mb-1">Usuario</label><input type="text" id="login-username" required class="input-style"></div><div class="mb-6"><label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label><input type="password" id="login-password" required class="input-style"></div><p id="login-error" class="text-red-500 text-sm mb-4"></p><button type="submit" class="btn-primary w-full mb-4">Iniciar sesión</button></form><div class="text-center text-sm space-y-2"><a href="#" class="text-primary-500 hover:text-primary-600 transition">Crear cuenta</a><span class="text-gray-400"> | </span><a href="#" class="text-primary-500 hover:text-primary-600 transition">¿Olvidaste tu contraseña?</a></div></div></div>`;
@@ -919,7 +1223,11 @@
                 let stockClasses = (stockNum <= 10) ? 'bg-red-500 text-white' : (stockNum <= 30) ? 'bg-orange-400 text-white' : 'bg-green-500 text-white';
                 return `<div class="table-row-container bg-white hover:bg-gray-50 border-b border-gray-200 text-sm md:text-base p-4 md:p-0 items-center"><div class="p-0 md:p-4 hidden md:flex items-center justify-center min-w-[200px]">${item.photoUrl ? `<img src="${item.photoUrl}" alt="${item.name}" class="product-image" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/555555?text=IMG'"/>` : `<div class="image-placeholder">SIN FOTO</div>`}</div><div class="hidden md:flex md:p-4 text-gray-500 truncate justify-center flex-col space-y-1 items-center" title="${item.id}"><span class="text-xs font-semibold">ID: ${item.id.substring(0, 8)}...</span>${item.barcode ? `<span class="text-xs text-gray-400">Cód: ${item.barcode}</span>` : `<span class="text-xs text-gray-400">Sin Código</span>`}</div><div class="p-0 md:p-4 font-extrabold text-lg text-gray-800 flex flex-col space-y-1 justify-center"><div class="flex items-center space-x-2"><span class="md:hidden">${item.photoUrl ? `<img src="${item.photoUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md inline mr-2 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/555555?text=IMG'" />` : `<span class="bg-gray-200 w-16 h-16 flex items-center justify-center text-xs rounded-md inline mr-2 shadow-sm">N/A</span>`}</span><span class="truncate">${item.name}</span></div><div class="mt-1 mb-2"><span class="text-primary-600 text-lg md:text-2xl font-black whitespace-nowrap">$${item.price}</span><span class="text-gray-500 text-xs ml-1 font-semibold"> (Venta)</span></div><div class="flex flex-col space-y-0 text-sm font-medium text-green-700 mt-1 md:mt-0 border-t pt-1 border-gray-100"><span id="inv-total-${item.id}" class="text-xs md:text-sm">Inversión Total: $<span class="font-bold">${totalInvestment}</span></span><span id="vent-total-${item.id}" class="text-xs md:text-sm">Venta Potencial: $<span class="font-bold">${totalSalesPotential}</span></span><span id="gan-total-${item.id}" class="text-xs md:text-sm">Ganancia Potencial: $<span class="font-bold">${totalProfitPotential}</span></span></div></div><div class="p-0 md:flex md:p-4 text-gray-600 justify-center items-center hidden">${item.category}</div><div class="p-0 md:flex md:p-4 flex-col space-y-1 justify-center items-center hidden"><span class="text-gray-500 font-medium text-sm md:text-base whitespace-nowrap">Costo: $${item.masterPrice}</span><span class="font-bold text-xs ${priceColor} whitespace-nowrap">Ganancia/U: $${profitText}</span></div><div class="p-0 md:flex md:p-4 text-gray-600 justify-center items-center hidden"><span id="stock-badge-${item.id}" class="py-1 px-3 inline-flex text-xs leading-5 font-semibold rounded-full ${stockClasses}">Stock: ${stockNum}</span></div><div class="p-0 md:flex md:p-4 flex space-x-3 pt-2 md:pt-0 pb-2 md:pb-0 justify-end items-center"><button onclick="openEditProductModal('${item.id}')" class="text-indigo-600 hover:text-indigo-900 transition text-xl" title="Editar">✏️</button><button onclick="openStockWarningModal('${item.id}', '${item.name}')" class="text-green-600 hover:text-green-900 transition text-xl" title="Añadir Stock">📦</button><button onclick="deleteItem('${item.id}', '${item.name}')" class="text-red-600 hover:text-red-900 transition text-xl" title="Eliminar">🗑️</button></div><div class="md:hidden flex flex-wrap justify-between items-center text-xs p-2 bg-gray-50 border-t"><span class="text-gray-600">Cat: ${item.category}</span><span class="text-green-600 font-medium">Venta/U: $${item.price}</span><span class="font-bold ${priceColor}">Ganancia/U: $${profitText}</span><span id="stock-badge-mobile-${item.id}" class="py-1 px-3 text-xs font-semibold rounded-full ${stockClasses}">Stock: ${stockNum}</span></div></div>`;
             }).join('');
-            return `<div class="flex justify-between items-center mb-6"><h2 class="text-3xl font-semibold text-gray-800">Productos</h2><button onclick="openAddProductModal()" class="btn-primary flex items-center space-x-1 py-2 px-3"><span>➕</span><span class="hidden sm:inline">Agregar Producto</span></button></div><div class="mb-8"><label for="search-input" class="block text-sm font-medium text-gray-700 mb-1">Buscar por nombre o código...</label><div class="flex space-x-2"><input type="text" id="search-input" oninput="updateSearchFilter(this.value)" placeholder="Escriba o escanee un código..." class="input-style shadow-lg flex-grow" value="${window.appState.searchFilter}"><button type="button" id="scan-search-btn" onclick="openScannerModal('search')" class="bg-primary-500 text-white w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg shadow-md hover:bg-primary-600 transition" title="Escanear para buscar"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7V4h3m0 0h5m-5 0v3m0-3h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5M10 7V4h3m0 0h5m-5 0v3m0-3h5m-5 0v3m-5 0h5m-5 0v3M10 10v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M4 10v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M10 16v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M4 16v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3" /></svg></button></div></div><div class="bg-white shadow-lg rounded-xl overflow-x-auto border border-gray-100"><div class="min-w-full inline-block align-middle"><div class="table-row-header bg-gray-50 font-bold text-gray-600 uppercase text-xs tracking-wider border-b p-4"><div class="flex items-center justify-center">Foto</div><div class="flex items-center justify-center">ID / Código</div><div class="flex items-center">Nombre / Precio Venta / Totales</div><div class="flex items-center justify-center">Categoría</div><div class="flex items-center justify-center">Costo / Ganancia (U)</div><div class="flex items-center justify-center">Stock</div><div class="flex items-center justify-end">Acciones</div></div><div id="inventory-table-body" class="divide-y divide-gray-200">${tableBody.length > 0 ? tableBody : '<div class="p-6 text-center text-gray-500">No hay productos.</div>'}</div></div></div><p class="text-sm text-gray-500 mt-4">Total de Productos: ${products.length}</p>`;
+            
+            // --- MODIFICACIÓN AQUÍ ---
+            // Se usa el valor de `window.appState.searchFilter` para rellenar el `value` del input
+            return `<div class="flex justify-between items-center mb-6"><h2 class="text-3xl font-semibold text-gray-800">Productos</h2><button onclick="openAddProductModal()" class="btn-primary flex items-center space-x-1 py-2 px-3"><span>➕</span><span class="hidden sm:inline">Agregar Producto</span></button></div><div class="mb-8"><label for="search-input" class="block text-sm font-medium text-gray-700 mb-1">Buscar por nombre o código...</label><div><input type="text" id="search-input" oninput="updateSearchFilter(this.value)" placeholder="Escriba para buscar..." class="input-style shadow-lg w-full" value="${window.appState.searchFilter}"></div></div>
+            <div class="bg-white shadow-lg rounded-xl overflow-x-auto border border-gray-100"><div class="min-w-full inline-block align-middle"><div class="table-row-header bg-gray-50 font-bold text-gray-600 uppercase text-xs tracking-wider border-b p-4"><div class="flex items-center justify-center">Foto</div><div class="flex items-center justify-center">ID / Código</div><div class="flex items-center">Nombre / Precio Venta / Totales</div><div class="flex items-center justify-center">Categoría</div><div class="flex items-center justify-center">Costo / Ganancia (U)</div><div class="flex items-center justify-center">Stock</div><div class="flex items-center justify-end">Acciones</div></div><div id="inventory-table-body" class="divide-y divide-gray-200">${tableBody.length > 0 ? tableBody : '<div class="p-6 text-center text-gray-500">No hay productos.</div>'}</div></div></div><p class="text-sm text-gray-500 mt-4">Total de Productos: ${products.length}</p>`;
         }
         function renderHistoryLog(invId) {
             const history = (window.appState.history[invId] || []).slice().sort((a, b) => b.timestamp - a.timestamp);
@@ -933,41 +1241,130 @@
             }).join('');
             return `<h2 class="text-3xl font-semibold text-gray-800 mb-6">Historial de Movimientos</h2><ul class="space-y-4">${historyList.length > 0 ? historyList : '<li class="p-6 text-center text-gray-500 bg-white rounded-xl shadow-lg">No hay movimientos.</li>'}</ul>`;
         }
+        
+        // --- [INICIO] FUNCIÓN renderPOSView() ACTUALIZADA ---
         function renderPOSView() {
             const allProducts = window.appState.pos.allProducts, cartItems = Object.values(window.appState.pos.cart);
             const totals = calculatePOSTotals(), posView = window.appState.pos.currentPOSView;
             const searchValue = window.appState.pos.productSearch.toLowerCase();
             const filteredProducts = allProducts.filter(p => p.stock > 0 && (p.name.toLowerCase().includes(searchValue) || (p.barcode && p.barcode.toLowerCase().includes(searchValue)) || p.category.toLowerCase().includes(searchValue)));
-            const posMenu = `<div class="flex-shrink-0 w-full lg:w-48 bg-gray-50 p-4 border-r border-gray-200"><h2 class="text-xl font-black text-gray-800 mb-6 border-b pb-3">TPV Pro</h2><nav class="space-y-2"><button onclick="changePOSView('dashboard')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-200'}"><span>📊</span> <span>Dashboard</span></button><button onclick="changePOSView('products')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'products' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-200'}"><span>📦</span> <span>Productos</span></button><button onclick="changePOSView('sales')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'sales' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-200'}"><span>📜</span> <span>Ventas Recientes</span></button><div class="h-px bg-gray-200 my-4"></div><button onclick="changeView('inventory')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition text-red-600 hover:bg-red-50"><span>🚪</span> <span>Volver a Inventarios</span></button></nav></div>`;
+            
+            // --- CAMBIO: Lógica para habilitar/deshabilitar botones según la sesión ---
+            const hasActiveSession = !!window.appState.pos.activeSessionId;
+            const productButtonClasses = hasActiveSession 
+                ? 'text-gray-700 hover:bg-gray-200' 
+                : 'opacity-50 cursor-not-allowed text-gray-400';
+            const productButtonDisabled = hasActiveSession ? '' : 'disabled';
+            // --- FIN CAMBIO ---
+
+            const posMenu = `<div class="flex-shrink-0 w-full lg:w-48 bg-gray-50 p-4 border-r border-gray-200"><h2 class="text-xl font-black text-gray-800 mb-6 border-b pb-3">TPV Pro</h2><nav class="space-y-2"><button onclick="changePOSView('dashboard')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-200'}"><span>📊</span> <span>Dashboard</span></button><button onclick="changePOSView('products')" ${productButtonDisabled} class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'products' ? 'bg-primary-500 text-white' : productButtonClasses}"><span>📦</span> <span>Productos</span></button><button onclick="changePOSView('sales')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'sales' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-200'}"><span>📜</span> <span>Ventas Recientes</span></button><div class="h-px bg-gray-200 my-4"></div><button onclick="changeView('inventory')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition text-red-600 hover:bg-red-50"><span>🚪</span> <span>Volver a Inventarios</span></button></nav></div>`;
+            
             let mainContent;
+
+            // --- CAMBIO: Actualizar renderizado del Dashboard ---
             const renderPOSDashboard = () => {
-                const totalStock = allProducts.reduce((sum, p) => sum + p.stock, 0);
+                const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
                 const lowStockCount = allProducts.filter(p => p.stock <= 10 && p.stock > 0).length;
-                const today = new Date().toDateString();
-                const salesToday = window.appState.pos.transactions.filter(t => new Date(t.timestamp).toDateString() === today).sort((a, b) => b.timestamp - a.timestamp);
-                const totalSalesToday = salesToday.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
-                return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">Dashboard TPV</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500"><p class="text-sm text-gray-500 font-medium">Ventas del Día</p><p class="text-3xl font-black text-gray-800 mt-1">$${totalSalesToday}</p><p class="text-xs text-gray-400 mt-2">${salesToday.length} transacciones</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-500"><p class="text-sm text-gray-500 font-medium">Stock Total</p><p class="text-3xl font-black text-gray-800 mt-1">${totalStock}</p><p class="text-xs text-gray-400 mt-2">Unidades totales</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500"><p class="text-sm text-gray-500 font-medium">Bajo Inventario</p><p class="text-3xl font-black ${lowStockCount > 0 ? 'text-red-500' : 'text-gray-800'} mt-1">${lowStockCount}</p><p class="text-xs text-gray-400 mt-2">Productos $\le 10$ unidades</p></div></div><button onclick="changePOSView('products')" class="btn-primary w-full md:w-auto mb-8 text-lg flex items-center justify-center space-x-2"><span>➕</span> <span>Nueva Venta</span></button><h3 class="text-xl font-semibold text-gray-800 mb-4">Ventas del Día (${salesToday.length})</h3><div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">${salesToday.length > 0 ? `<table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hora</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Productos</th><th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total</th></tr></thead><tbody class="bg-white divide-y divide-gray-200">${salesToday.map(t => `<tr><td class="px-6 py-4 text-sm text-gray-500">${new Date(t.timestamp).toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'})}</td><td class="px-6 py-4 text-sm font-medium text-gray-900 truncate max-w-xs" title="${t.items.map(i => `${i.quantity}x ${i.name}`).join(', ')}">${t.items.map(i => `${i.quantity}x ${i.name}`).join(', ')}</td><td class="px-6 py-4 text-sm font-bold text-right text-green-600">$${t.total}</td></tr>`).join('')}</tbody></table>` : `<div class="p-4 text-center text-gray-500">No hay ventas hoy.</div>`}</div></div></div>`;
+                const totalStock = allProducts.reduce((sum, p) => sum + p.stock, 0);
+
+                let sessionTitle, totalSales, salesListHTML, salesCount, sessionControls;
+
+                if (activeSession) {
+                    sessionTitle = `Dashboard TPV: ${activeSession.name}`;
+                    const transactions = activeSession.transactions.slice().sort((a, b) => b.timestamp - a.timestamp);
+                    totalSales = transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
+                    salesCount = transactions.length;
+                    salesListHTML = transactions.map(t => `<tr><td class="px-6 py-4 text-sm text-gray-500">${new Date(t.timestamp).toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'})}</td><td class="px-6 py-4 text-sm font-medium text-gray-900 truncate max-w-xs" title="${t.items.map(i => `${i.quantity}x ${i.name}`).join(', ')}">${t.items.map(i => `${i.quantity}x ${i.name}`).join(', ')}</td><td class="px-6 py-4 text-sm font-bold text-right text-green-600">$${t.total}</td></tr>`).join('');
+                    sessionControls = `<div class="flex flex-col md:flex-row gap-4 mb-8"><button onclick="changePOSView('products')" class="btn-primary w-full md:w-auto text-lg flex items-center justify-center space-x-2"><span>➕</span> <span>Nueva Venta</span></button><button onclick="openCloseSessionModal()" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 transition w-full md:w-auto text-lg flex items-center justify-center space-x-2"><span>🔒</span> <span>Cerrar Venta</span></button></div>`;
+                } else {
+                    sessionTitle = "Dashboard TPV";
+                    totalSales = "0.00";
+                    salesCount = 0;
+                    salesListHTML = `<div class="p-4 text-center text-gray-500">No hay ventas en esta sesión.</div>`;
+                    sessionControls = `<div class="mb-8"><button onclick="openStartSessionModal()" class="bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-green-600 transition w-full text-lg flex items-center justify-center space-x-2"><span>▶️</span> <span>Iniciar Nueva Sesión de Venta</span></button><p class="text-center text-sm text-gray-500 mt-2">Debe iniciar una sesión para registrar ventas.</p></div>`;
+                }
+
+                return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">${sessionTitle}</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500"><p class="text-sm text-gray-500 font-medium">Ventas de la Sesión</p><p class="text-3xl font-black text-gray-800 mt-1">$${totalSales}</p><p class="text-xs text-gray-400 mt-2">${salesCount} transacciones</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-500"><p class="text-sm text-gray-500 font-medium">Stock Total</p><p class="text-3xl font-black text-gray-800 mt-1">${totalStock}</p><p class="text-xs text-gray-400 mt-2">Unidades totales</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500"><p class="text-sm text-gray-500 font-medium">Bajo Inventario</p><p class="text-3xl font-black ${lowStockCount > 0 ? 'text-red-500' : 'text-gray-800'} mt-1">${lowStockCount}</p><p class="text-xs text-gray-400 mt-2">Productos $\le 10$ unidades</p></div></div>${sessionControls}<h3 class="text-xl font-semibold text-gray-800 mb-4">Ventas de la Sesión Actual (${salesCount})</h3><div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">${salesCount > 0 ? `<table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hora</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Productos</th><th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total</th></tr></thead><tbody class="bg-white divide-y divide-gray-200">${salesListHTML}</tbody></table>` : salesListHTML}</div></div></div>`;
             }
+            // --- FIN CAMBIO DASHBOARD ---
+
             const renderProductGallery = () => {
                 const productGrid = filteredProducts.map(p => { const invName = (window.appState.inventories.find(i => i.id === p.inventoryId)?.name.substring(0, 5) || 'N/A'); return `<div onclick="addProductToCart(${JSON.stringify(p).replace(/'/g, '&#39;').replace(/"/g, '&#34;')}, 1)" class="pos-product-card bg-white h-full relative"><span class="absolute top-2 right-2 text-xs text-gray-400">Inv: ${invName}</span><div class="w-full h-24 sm:h-32 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden mb-2">${p.photoUrl ? `<img src="${p.photoUrl}" alt="${p.name}" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/555555?text=IMG'"/>` : `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`}</div><div class="flex flex-col flex-1 mt-1"><p class="text-sm font-medium text-gray-800 truncate" title="${p.name}">${p.name}</p><div class="mt-1 flex justify-between items-end"><span class="text-xl font-bold text-primary-500">$${p.price}</span><span class="text-xs font-semibold ${p.stock <= 10 ? 'text-red-500' : 'text-gray-500'}">Stock: ${p.stock}</span></div></div></div>`; }).join('');
-                return `<div class="pos-main-content-wrapper"><div class="flex-shrink-0 p-4 bg-white border-b border-gray-200"><div class="text-lg font-bold text-gray-800 mb-3">Galería de Productos</div><div class="flex space-x-2"><input type="text" id="pos-search-input" oninput="updatePOSSearchFilter(this.value)" placeholder="Buscar producto o escanear código..." class="input-style shadow-sm flex-grow" value="${window.appState.pos.productSearch}"><button type="button" id="scan-pos-search-btn" onclick="openScannerModal('pos_search')" class="bg-primary-500 text-white w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg shadow-md hover:bg-primary-600 transition" title="Escanear para buscar"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7V4h3m0 0h5m-5 0v3m0-3h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5m-5 0v3m-5 0h5M10 7V4h3m0 0h5m-5 0v3m0-3h5m-5 0v3m-5 0h5m-5 0v3M10 10v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M4 10v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M10 16v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3M4 16v3m0 0h3m-3 0v3m0 0h3m-3 0v3m0 0h3" /></svg></button></div></div><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">${productGrid.length > 0 ? productGrid : '<div class="col-span-full p-8 text-center text-gray-500 bg-gray-100 rounded-xl">No se encontraron productos.</div>'}</div></div></div>`;
+                
+                // --- MODIFICACIÓN AQUÍ ---
+                // Se usa el valor de `window.appState.pos.productSearch` para rellenar el `value` del input
+                return `<div class="pos-main-content-wrapper"><div class="flex-shrink-0 p-4 bg-white border-b border-gray-200"><div class="text-lg font-bold text-gray-800 mb-3">Galería de Productos</div><div><input type="text" id="pos-search-input" oninput="updatePOSSearchFilter(this.value)" placeholder="Buscar producto..." class="input-style shadow-sm w-full" value="${window.appState.pos.productSearch}"></div></div>
+                
+                <div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">${productGrid.length > 0 ? productGrid : '<div class="col-span-full p-8 text-center text-gray-500 bg-gray-100 rounded-xl">No se encontraron productos.</div>'}</div></div></div>`;
             };
+
+            // --- [INICIO] CAMBIO: Renderizar historial de sesiones cerradas (con onclick) ---
             const renderPOSTransactions = () => {
-                const transactions = window.appState.pos.transactions.slice().sort((a, b) => b.timestamp - a.timestamp);
-                const salesList = transactions.map(t => { const date = new Date(t.timestamp).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' }); const itemsSummary = t.items.map(i => `${i.quantity}x ${i.name}`).join(', '); return `<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100"><div class="flex justify-between items-start border-b pb-2 mb-2"><span class="text-xl font-bold text-green-600">$${t.total}</span><span class="text-xs text-gray-400">${date}</span></div><p class="text-sm font-medium text-gray-800 mb-1">ID: ${t.id.substring(0, 8)}...</p><p class="text-xs text-gray-600 line-clamp-2" title="${itemsSummary}">Productos: ${itemsSummary}</p><p class="text-xs text-gray-500 mt-1">Subtotal: $${t.subtotal} | IVA: $${t.tax}</p></div>`; }).join('');
-                return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">Historial de Ventas</h2><div class="space-y-4">${salesList.length > 0 ? salesList : '<div class="p-8 text-center text-gray-500 bg-white rounded-xl shadow-lg">No hay ventas registradas.</div>'}</div></div></div>`;
+                const closedSessions = window.appState.pos.salesSessions.filter(s => s.status === 'closed').sort((a, b) => b.timestamp - a.timestamp);
+                const salesList = closedSessions.map(s => { 
+                    const date = new Date(s.timestamp).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' }); 
+                    const total = s.transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
+                    return `<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-lg hover:border-primary-500 transition duration-150" onclick="openSessionDetailsModal('${s.id}')">
+                                <div class="flex justify-between items-start border-b pb-2 mb-2">
+                                    <span class="text-xl font-bold text-gray-800">${s.name}</span>
+                                    <span class="text-xs text-gray-400">${date}</span>
+                                </div>
+                                <p class="text-lg font-bold text-green-600">Total: $${total}</p>
+                                <p class="text-sm text-gray-600">Transacciones: ${s.transactions.length}</p>
+                                <p class="text-xs text-gray-500 mt-1">ID Sesión: ${s.id.substring(0, 8)}...</p>
+                            </div>`; 
+                }).join('');
+                return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">Historial de Ventas (Sesiones Cerradas)</h2><div class="space-y-4">${salesList.length > 0 ? salesList : '<div class="p-8 text-center text-gray-500 bg-white rounded-xl shadow-lg">No hay sesiones de venta cerradas.</div>'}</div></div></div>`;
             }
+            // --- [FIN] CAMBIO ---
+
             if (posView === 'dashboard') mainContent = renderPOSDashboard();
             else if (posView === 'products') mainContent = renderProductGallery();
             else if (posView === 'sales') mainContent = renderPOSTransactions();
             else mainContent = renderPOSDashboard();
-            const cartSection = `<div class="bg-gray-100 border-l border-gray-200 flex flex-col"><div class="flex-shrink-0 bg-white p-4 border-b"><h3 class="text-2xl font-bold text-gray-800">Carrito</h3></div><div class="p-4 space-y-3">${cartItems.length > 0 ? cartItems.map(item => `<div class="bg-white p-3 rounded-lg shadow-sm flex items-center justify-between border-l-4 border-primary-500"><div class="flex-1 min-w-0 pr-2"><p class="font-semibold text-gray-800 truncate" title="${item.name}">${item.name}</p><p class="text-xs text-gray-500">$${item.price.toFixed(2)} c/u (Stock: ${item.maxStock})</p></div><div class="flex items-center space-x-2"><button onclick="updateCartQuantity('${item.id}', -1)" class="text-gray-600 hover:text-red-500 font-bold text-xl leading-none">-</button><span class="font-bold text-lg text-primary-600 w-6 text-center">${item.quantity}</span><button onclick="updateCartQuantity('${item.id}', 1)" class="text-gray-600 hover:text-green-500 font-bold text-xl leading-none">+</button></div></div>`).join('') : `<div class="text-center text-gray-500 p-8"><span class="block text-4xl mb-2">🛒</span><p>Añade productos para comenzar.</p></div>`}</div><div classpre="flex-shrink-0 bg-white p-4 shadow-2xl border-t border-gray-200 mt-auto"><div class="space-y-2 mb-4"><div class="flex justify-between text-sm text-gray-600"><span>Subtotal:</span><span>$${totals.subtotal}</span></div><div class="flex justify-between text-sm text-gray-600 border-b pb-2"><span>IVA (16%):</span><span>$${totals.tax}</span></div><div class="flex justify-between text-2xl font-black text-gray-800"><span>TOTAL:</span><span>$${totals.total}</span></div></div><button onclick="processSale()" ${cartItems.length === 0 ? 'disabled' : ''} class="${cartItems.length === 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'} text-white font-extrabold py-3 rounded-xl w-full text-lg shadow-lg transition duration-200">Procesar Pago ($${totals.total})</button><button onclick="clearCart()" class="text-red-500 hover:text-red-600 text-sm mt-3 w-full">Vaciar Carrito</button></div></div>`;
-            return `<div class="pos-full-screen"><header class="bg-white shadow-md flex-shrink-0 flex items-center justify-between p-3 border-b"><div class="text-xl font-black text-gray-800">TPV Pro</div><div class="flex items-center space-x-3"><span class="text-sm text-gray-500 hidden sm:block">Usuario: Admin</span><div class="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-sm">A</div></div></header><div class="pos-grid-container flex-1"><div class="hidden lg:flex">${posMenu}</div><div class="${posView === 'cart' ? 'hidden' : 'block'} lg:block overflow-hidden h-full">${mainContent}</div><div class="hidden lg:flex overflow-hidden">${cartSection}</div><div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl z-40"><div class="flex justify-around p-1 border-b"><button onclick="changePOSView('products')" class="flex flex-col items-center p-2 rounded-lg ${posView === 'products' ? 'text-primary-500' : 'text-gray-500'}"><span class="text-2xl">📦</span> <span class="text-xs">Productos</span></button><button onclick="changePOSView('dashboard')" class="flex flex-col items-center p-2 rounded-lg ${posView === 'dashboard' ? 'text-primary-500' : 'text-gray-500'}"><span class="text-2xl">📊</span> <span class="text-xs">Dashboard</span></button><button onclick="changePOSView('sales')" class="flex flex-col items-center p-2 rounded-lg ${posView === 'sales' ? 'text-primary-500' : 'text-gray-500'}"><span class="text-2xl">📜</span> <span class="text-xs">Ventas</span></button><button onclick="changePOSView('cart')" class="flex flex-col items-center p-2 rounded-lg ${posView === 'cart' ? 'text-primary-500' : 'text-gray-500'} relative"><span class="text-2xl">🛒</span> ${cartItems.length > 0 ? `<span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">${cartItems.length}</span>` : ''}<span class="text-xs">Carrito</span></button><button onclick="changeView('inventory')" class="flex flex-col items-center p-2 rounded-lg text-red-500"><span class="text-2xl">🚪</span> <span class="text-xs">Volver</span></button></div><div class="${posView === 'cart' ? 'block' : 'hidden'} max-h-[80vh] overflow-y-auto">${cartSection}</div></div></div><footer class="bg-white border-t border-gray-100 text-xs text-gray-400 text-center p-2 flex-shrink-0">© 2025 TPV Pro.</footer></div>`;
+
+            const cartSection = `<div class="bg-gray-100 border-l border-gray-200 flex flex-col"><div class="flex-shrink-0 bg-white p-4 border-b"><h3 class="text-2xl font-bold text-gray-800">Carrito</h3></div><div class="p-4 space-y-3">${cartItems.length > 0 ? cartItems.map(item => `<div class="bg-white p-3 rounded-lg shadow-sm flex items-center justify-between border-l-4 border-primary-500"><div class="flex-1 min-w-0 pr-2"><p class="font-semibold text-gray-800 truncate" title="${item.name}">${item.name}</p><p class="text-xs text-gray-500">$${item.price.toFixed(2)} c/u (Stock: ${item.maxStock})</p></div><div class="flex items-center space-x-2"><button onclick="updateCartQuantity('${item.id}', -1)" class="text-gray-600 hover:text-red-500 font-bold text-xl leading-none">-</button><span class="font-bold text-lg text-primary-600 w-6 text-center">${item.quantity}</span><button onclick="updateCartQuantity('${item.id}', 1)" class="text-gray-600 hover:text-green-500 font-bold text-xl leading-none">+</button></div></div>`).join('') : `<div class="text-center text-gray-500 p-8"><span class="block text-4xl mb-2">🛒</span><p>Añade productos para comenzar.</p></div>`}</div><div classpre="flex-shrink-0 bg-white p-4 shadow-2xl border-t border-gray-200 mt-auto"><div class="space-y-2 mb-4"><div class="flex justify-between text-sm text-gray-600"><span>Subtotal:</span><span>$${totals.subtotal}</span></div><div class="flex justify-between text-sm text-gray-600 border-b pb-2"><span>IVA (0%):</span><span>$${totals.tax}</span></div><div class="flex justify-between text-2xl font-black text-gray-800"><span>TOTAL:</span><span>$${totals.total}</span></div></div><button onclick="processSale()" ${cartItems.length === 0 || !hasActiveSession ? 'disabled' : ''} class="${cartItems.length === 0 || !hasActiveSession ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'} text-white font-extrabold py-3 rounded-xl w-full text-lg shadow-lg transition duration-200">Procesar Pago ($${totals.total})</button><button onclick="clearCart()" class="text-red-500 hover:text-red-600 text-sm mt-3 w-full">Vaciar Carrito</button></div></div>`;
+            
+            // --- [INICIO] MODIFICACIÓN PARA SCROLL MÓVIL ---
+            return `<div class="pos-full-screen"><header class="bg-white shadow-md flex-shrink-0 flex items-center justify-between p-3 border-b"><div class="text-xl font-black text-gray-800">TPV Pro</div><div class="flex items-center space-x-3"><span class="text-sm text-gray-500 hidden sm:block">Usuario: Admin</span><div class="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-sm">A</div></div></header><div class="pos-grid-container flex-1"><div class="hidden lg:flex">${posMenu}</div>
+            
+            <div class="hidden lg:block h-full">${mainContent}</div>
+            
+            <div class="hidden lg:flex overflow-hidden">${cartSection}</div>
+
+            <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl z-40">
+                <div class="flex justify-around p-1 border-b">
+                    <button onclick="changePOSView('products')" ${productButtonDisabled} class="flex flex-col items-center p-2 rounded-lg ${posView === 'products' ? 'text-primary-500' : (hasActiveSession ? 'text-gray-500' : 'text-gray-400 cursor-not-allowed')}"><span class="text-2xl">📦</span> <span class="text-xs">Productos</span></button><button onclick="changePOSView('dashboard')" class="flex flex-col items-center p-2 rounded-lg ${posView === 'dashboard' ? 'text-primary-500' : 'text-gray-500'}"><span class="text-2xl">📊</span> <span class="text-xs">Dashboard</span></button><button onclick="changePOSView('sales')" class="flex flex-col items-center p-2 rounded-lg ${posView === 'sales' ? 'text-primary-500' : 'text-gray-500'}"><span class="text-2xl">📜</span> <span class="text-xs">Ventas</span></button><button onclick="changePOSView('cart')" class="flex flex-col items-center p-2 rounded-lg ${posView === 'cart' ? 'text-primary-500' : 'text-gray-500'} relative"><span class="text-2xl">🛒</span> ${cartItems.length > 0 ? `<span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">${cartItems.length}</span>` : ''}<span class="text-xs">Carrito</span></button><button onclick="changeView('inventory')" class="flex flex-col items-center p-2 rounded-lg text-red-500"><span class="text-2xl">🚪</span> <span class="text-xs">Volver</span></button>
+                </div>
+                
+                <div class="${posView === 'cart' ? 'block' : 'hidden'} max-h-[80vh] overflow-y-auto">
+                    ${cartSection}
+                </div>
+
+                <div class="${posView !== 'cart' ? 'block' : 'hidden'} max-h-[80vh] overflow-y-auto">
+                    ${mainContent}
+                </div>
+            </div>
+            </div><footer class="bg-white border-t border-gray-100 text-xs text-gray-400 text-center p-2 flex-shrink-0">© 2025 TPV Pro.</footer></div>`;
         }
+        // --- [FIN] FUNCIÓN renderPOSView() ACTUALIZADA ---
 
         // --- RENDERIZADO PRINCIPAL ---
-        function renderApp() {
+        
+        // --- [INICIO] MODIFICACIÓN DE renderApp ---
+        function renderApp(focusedInputId = null, cursorPosition = null) {
             let contentHTML = '';
+            
+            // --- Lógica para guardar el estado del scroll (para TPV) ---
+            let scrollTops = {};
+            if (focusedInputId && (focusedInputId === 'pos-search-input')) {
+                 const posScrollArea = document.querySelector('.pos-scroll-area');
+                 if (posScrollArea) {
+                     scrollTops['pos-scroll-area'] = posScrollArea.scrollTop;
+                 }
+            }
+
+            // --- Lógica de renderizado (SIN CAMBIOS) ---
             if (!window.appState.isLoggedIn) {
                 contentHTML = loginPageHTML;
             } else if (window.appState.currentView === 'pos_manager') {
@@ -984,7 +1381,32 @@
                 document.body.style.overflow = 'auto';
                 contentHTML = renderDashboardView();
             }
+            
+            // --- Renderizar ---
             appContainer.innerHTML = contentHTML;
+
+            // --- Lógica para restaurar el foco y el scroll ---
+            if (focusedInputId) {
+                const focusedInput = document.getElementById(focusedInputId);
+                if (focusedInput) {
+                    focusedInput.focus(); // Devolver el foco
+                    try {
+                        // Restaurar la posición del cursor
+                        focusedInput.setSelectionRange(cursorPosition, cursorPosition);
+                    } catch (e) {
+                        console.warn("No se pudo restaurar la posición del cursor:", e);
+                    }
+                }
+            }
+
+            // Restaurar scroll de TPV si existe
+            if (scrollTops['pos-scroll-area']) {
+                const posScrollArea = document.querySelector('.pos-scroll-area');
+                if (posScrollArea) {
+                    posScrollArea.scrollTop = scrollTops['pos-scroll-area'];
+                }
+            }
+            // --- [FIN] MODIFICACIÓN DE renderApp ---
         }
 
         // --- INICIALIZACIÓN ---
@@ -998,12 +1420,17 @@
                 setTimeout(() => showToast('Sesión reanudada.', 'info'), 100);
             }
 
+            // --- CAMBIO: Mover listeners a renderApp o delegar ---
+            // Los listeners se pierden al hacer innerHTML. 
+            // Los listeners de los modales están bien porque los modales están fuera de #app-container.
+            // Pero los formularios de los modales están aquí, así que está bien.
             const productForm = document.getElementById('product-form');
             if (productForm) productForm.addEventListener('submit', window.handleProductForm);
             const inventoryForm = document.getElementById('inventory-form');
             if (inventoryForm) inventoryForm.addEventListener('submit', window.handleInventoryForm);
             const stockForm = document.getElementById('stock-form');
             if (stockForm) stockForm.addEventListener('submit', window.handleStockForm); 
+            // Los nuevos formularios de sesión ya tienen 'onsubmit' en el HTML, así que no se necesitan aquí.
             
             renderApp();
         });
@@ -1015,3 +1442,5 @@
     </script>
 </body>
 </html>
+
+
