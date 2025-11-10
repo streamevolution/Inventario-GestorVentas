@@ -199,13 +199,20 @@
                 </div>
 
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Redes Sociales</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Redes Sociales y Salida</h3>
                     <div class="space-y-3">
-                        <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md transition duration-150" onclick="window.open('https://facebook.com', '_blank')">
+                        <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md transition duration-150" onclick="window.open('https://facebook.com/AngelDZamoraNS', '_blank')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.897v-2.89H10.4V9.874c0-2.48 1.49-3.84 3.738-3.84 1.07 0 1.99.08 2.258.116v2.55h-1.503c-1.21 0-1.444.574-1.444 1.418v1.85h2.834l-.369 2.89H15.49V21.878C20.343 21.128 22 16.991 22 12z" /></svg>
                             <span>Síguenos en Facebook</span>
                         </button>
-                        <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:opacity-90 text-white font-semibold shadow-md transition duration-150" onclick="window.open('https://instagram.com', '_blank')">
+                        
+                        <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold shadow-md transition duration-150" onclick="logout()">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                            <span>Cerrar Sesión</span>
+                        </button>
+                        <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:opacity-90 text-white font-semibold shadow-md transition duration-150" onclick="window.open('https://instagram.com/angelzamorange', '_blank')">
                              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.053 1.805.247 2.227.421.56.22 1.003.504 1.448.95.446.446.73.888.95 1.448.174.422.368 1.057.421 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.053 1.17-.247 1.805-.421 2.227-.22.56-.504 1.003-.95 1.448-.446.446-.888.73-1.448.95-.422.174-1.057.368-2.227.421-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.053-1.805-.247-2.227-.421-.56-.22-1.003-.504-1.448.95-.446.446-.73-.888-.95-1.448-.174-.422-.368-1.057-.421-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.053 1.17.247 1.805.421-2.227.22-.56.504 1.003.95-1.448.446.446.888.73 1.448.95.422.174-1.057.368-2.227.421C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.17 0-3.515.012-4.74.068-1.107.05-1.666.236-1.993.364-.403.15-.71.35-1.02.66-.31.31-.51.618-.66 1.02-.128.327-.314.886-.364 1.993-.056 1.225-.068 1.57-.068 4.74s.012 3.515.068 4.74c.05 1.107.236 1.666.364 1.993.15.403.35.71.66 1.02.31.31.618.51 1.02.66.327.128.886.314 1.993.364 1.225.056 1.57.068 4.74.068s3.515-.012 4.74-.068c1.107-.05 1.666-.236 1.993-.364.403-.15.71.35 1.02-.66.31-.31.51-.618-.66-1.02.128-.327-.314.886-.364-1.993.056-1.225.068-1.57.068-4.74s-.012-3.515-.068-4.74c-.05-1.107-.236-1.666-.364-1.993-.15-.403-.35.71-.66-1.02-.31-.31-.618-.51-1.02-.66-.327-.128-.886-.314-1.993-.364C15.515 3.793 15.17 3.783 12 3.783zM12 7.88a4.12 4.12 0 100 8.24 4.12 4.12 0 000-8.24zM12 14.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM18.192 5.25a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" /></svg>
                             <span>Síguenos en Instagram</span>
                         </button>
@@ -904,6 +911,7 @@
         window.logout = function() {
             window.appState.isLoggedIn = false; window.appState.currentInventoryId = null; 
             localStorage.setItem('isLoggedIn', 'false'); localStorage.removeItem('currentInventoryId');
+            closeModal(null, 'user-profile-modal'); // Cerrar modal si está abierto
             showToast('Sesión cerrada.', 'info'); renderApp(); 
         }
 
@@ -1649,7 +1657,27 @@
             const invId = window.appState.currentInventoryId, inventory = window.appState.inventories.find(i => i.id === invId);
             const inventoryName = inventory ? inventory.name : '...';
             const viewContent = (window.appState.currentView === 'inventory') ? renderProductsTable(invId) : renderHistoryLog(invId);
-            return `<div class="min-h-screen flex flex-col"><header class="bg-white shadow-md sticky top-0 z-10"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"><div class="flex items-center space-x-3"><button onclick="selectInventory(null)" class="text-gray-500 hover:text-primary-500 transition font-medium">← Mis Inventarios</button><h1 class="text-2xl font-bold text-gray-800 truncate" title="${inventoryName}">${inventoryName}</h1></div><span class="text-xs text-gray-500 hidden sm:block">Almacenamiento Local</span></div></header><div class="flex flex-1 max-w-7xl mx-auto w-full"><nav class="bg-white shadow-xl w-64 p-4 space-y-2 flex-shrink-0 border-r border-gray-100 hidden md:block"><button onclick="changeView('inventory')" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition ${window.appState.currentView === 'inventory' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"><span class="text-xl">📦</span> <span>Productos</span></button><button onclick="openAddProductModal()" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition text-gray-700 hover:bg-gray-100"><span class="text-xl">➕</span> <span>Agregar Producto</span></button><button onclick="changeView('history')" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition ${window.appState.currentView === 'history' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"><span class="text-xl">📜</span> <span>Historial</span></button><button onclick="logout()" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition text-red-600 hover:bg-red-50"><span class="text-xl">🚪</span> <span>Cerrar Sesión</span></button></nav><div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl flex justify-around z-40 p-1"><button onclick="changeView('inventory')" class="flex flex-col items-center p-2 rounded-lg ${window.appState.currentView === 'inventory' ? 'text-primary-500' : 'text-gray-500'}"><span class="text-2xl">📦</span> <span class="text-xs">Productos</span></button><button onclick="openAddProductModal()" class="flex flex-col items-center p-2 rounded-lg text-primary-500"><span class="text-2xl">➕</span> <span class="text-xs">Agregar</span></button><button onclick="changeView('history')" class="flex flex-col items-center p-2 rounded-lg ${window.appState.currentView === 'history' ? 'text-primary-500' : 'text-gray-500'}"><span class="text-2xl">📜</span> <span class="text-xs">Historial</span></button><button onclick="logout()" class="flex flex-col items-center p-2 rounded-lg text-red-500"><span class="text-2xl">🚪</span> <span class="text-xs">Salir</span></button></div><main class="flex-1 p-4 md:p-8 overflow-y-auto main-content-padding"><div id="dashboard-content">${viewContent}</div></main></div></div>`;
+            
+            // ===== INICIO DE CAMBIO =====
+            // El botón 'Cerrar Sesión' (logout) se cambia por 'Volver' (selectInventory(null))
+            const mobileNav = `
+                <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-2xl flex justify-around z-40 p-1">
+                    <button onclick="changeView('inventory')" class="flex flex-col items-center p-2 rounded-lg ${window.appState.currentView === 'inventory' ? 'text-primary-500' : 'text-gray-500'}">
+                        <span class="text-2xl">📦</span> <span class="text-xs">Productos</span>
+                    </button>
+                    <button onclick="openAddProductModal()" class="flex flex-col items-center p-2 rounded-lg text-primary-500">
+                        <span class="text-2xl">➕</span> <span class="text-xs">Agregar</span>
+                    </button>
+                    <button onclick="changeView('history')" class="flex flex-col items-center p-2 rounded-lg ${window.appState.currentView === 'history' ? 'text-primary-500' : 'text-gray-500'}">
+                        <span class="text-2xl">📜</span> <span class="text-xs">Historial</span>
+                    </button>
+                    <button onclick="selectInventory(null)" class="flex flex-col items-center p-2 rounded-lg text-gray-500">
+                        <span class="text-2xl">🚪</span> <span class="text-xs">Volver</span>
+                    </button>
+                </div>`;
+            // ===== FIN DE CAMBIO =====
+
+            return `<div class="min-h-screen flex flex-col"><header class="bg-white shadow-md sticky top-0 z-10"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"><div class="flex items-center space-x-3"><button onclick="selectInventory(null)" class="text-gray-500 hover:text-primary-500 transition font-medium">← Mis Inventarios</button><h1 class="text-2xl font-bold text-gray-800 truncate" title="${inventoryName}">${inventoryName}</h1></div><span class="text-xs text-gray-500 hidden sm:block">Almacenamiento Local</span></div></header><div class="flex flex-1 max-w-7xl mx-auto w-full"><nav class="bg-white shadow-xl w-64 p-4 space-y-2 flex-shrink-0 border-r border-gray-100 hidden md:block"><button onclick="changeView('inventory')" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition ${window.appState.currentView === 'inventory' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"><span class="text-xl">📦</span> <span>Productos</span></button><button onclick="openAddProductModal()" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition text-gray-700 hover:bg-gray-100"><span class="text-xl">➕</span> <span>Agregar Producto</span></button><button onclick="changeView('history')" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition ${window.appState.currentView === 'history' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-100'}"><span class="text-xl">📜</span> <span>Historial</span></button><button onclick="logout()" class="w-full text-left py-2 px-4 rounded-lg flex items-center space-x-2 transition text-red-600 hover:bg-red-50"><span class="text-xl">🚪</span> <span>Cerrar Sesión</span></button></nav>${mobileNav}<main class="flex-1 p-4 md:p-8 overflow-y-auto main-content-padding"><div id="dashboard-content">${viewContent}</div></main></div></div>`;
         }
         function renderProductsTable(invId) {
             let products = window.appState.products[invId] || [];
@@ -1843,7 +1871,7 @@
                     ${mobileMainContent}
                 </div>
             </div>
-            </div><footer class="bg-white border-t border-gray-100 text-xs text-gray-400 text-center p-2 flex-shrink-0">© 2025 TPV Pro.</footer></div>`;
+            </div><footer class="bg-white border-t border-gray-100 text-xs text-gray-400 text-center p-2 flex-shrink-0">© 2025 TPV Pro By Juan Zamora.</footer></div>`;
         }
 
         // --- RENDERIZADO PRINCIPAL ---
