@@ -33,11 +33,16 @@
             /* Tema por defecto (Azul) */
             --color-primary-500: #4f46e5;
             --color-primary-600: #4338ca;
+            /* --- CAMBIO: Fondo por defecto --- */
+            --color-primary-bg: #f9fafb; /* 'neutral-50' por defecto */
         }
 
         /* Estilos personalizados */
         body {
-            @apply bg-neutral-50 font-sans;
+            /* --- CAMBIO: Usar variable para el fondo y añadir transición --- */
+            background-color: var(--color-primary-bg);
+            @apply font-sans;
+            transition: background-color 0.3s ease;
         }
         .btn-primary {
             @apply bg-primary-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-primary-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
@@ -109,7 +114,13 @@
         /* ---------------------------------------------------------------------- */
         /* ESTILOS TPV (POS) */
         /* ---------------------------------------------------------------------- */
-        .pos-full-screen { @apply h-screen flex flex-col; overflow: hidden; }
+        /* --- CAMBIO: Aplicar fondo de tema al contenedor TPV --- */
+        .pos-full-screen { 
+            @apply h-screen flex flex-col; 
+            overflow: hidden; 
+            background-color: var(--color-primary-bg);
+            transition: background-color 0.3s ease;
+        }
         .pos-grid-container { @apply flex-1 grid; grid-template-columns: 1fr; }
         @media (min-width: 1024px) { .pos-grid-container { grid-template-columns: 2fr 1fr; } }
         
@@ -662,14 +673,18 @@
                                 document.getElementById('barcode').value = code;
                                 showToast('Código de barras escaneado.', 'success');
                             } else if (mode === 'search') {
-                                document.getElementById('search-input').value = code;
-                                updateSearchFilter(code); // Aplicar filtro
-                                showToast(`Buscando producto: ${code}`, 'info');
+                                const searchInput = document.getElementById('inventory-search-input'); // --- CAMBIO DE ID ---
+                                if (searchInput) {
+                                    searchInput.value = code;
+                                    handleInventorySearchInput(searchInput); // --- CAMBIO DE FUNCIÓN ---
+                                    showToast(`Buscando producto: ${code}`, 'info');
+                                }
                             } else if (mode === 'pos_search') {
-                                const posSearchInput = document.getElementById('pos-search-input');
+                                // Intentar con ambos IDs
+                                const posSearchInput = document.getElementById('pos-search-input-mobile') || document.getElementById('pos-search-input-desktop');
                                 if (posSearchInput) {
                                     posSearchInput.value = code;
-                                    updatePOSSearchFilter(code); // Aplicar filtro TPV
+                                    handlePOSSearchInput(posSearchInput); // --- CAMBIO DE FUNCIÓN ---
                                     showToast(`Buscando en TPV: ${code}`, 'info');
                                 }
                             }
@@ -717,23 +732,47 @@
         }
         
         // --- LÓGICA DE TEMAS ---
+        
+        // --- [INICIO] CAMBIO: Objeto 'themes' actualizado con valores RGB ---
         const themes = {
-            'azul': { '500': '#4f46e5', '600': '#4338ca' }, 'rosa': { '500': '#ec4899', '600': '#db2777' },
-            'rojo': { '500': '#ef4444', '600': '#dc2626' }, 'morado': { '500': '#8b5cf6', '600': '#7c3aed' },
-            'amarillo': { '500': '#eab308', '600': '#ca8a04' }, 'obscuro': { '500': '#334155', '600': '#1e293b' },
-            'verde': { '500': '#22c55e', '600': '#16a34a' }, 'anaranjado': { '500': '#f97316', '600': '#ea580c' },
-            'gris': { '500': '#6b7280', '600': '#4b5563' }, 'beige': { '500': '#d2b48c', '600': '#b8976f' },
-            'turquesa': { '500': '#14b8a6', '600': '#0d9488' }
+            'azul': { '500': '#4f46e5', '600': '#4338ca', 'rgb': '79, 70, 229' },
+            'rosa': { '500': '#ec4899', '600': '#db2777', 'rgb': '236, 72, 153' },
+            'rojo': { '500': '#ef4444', '600': '#dc2626', 'rgb': '239, 68, 68' },
+            'morado': { '500': '#8b5cf6', '600': '#7c3aed', 'rgb': '139, 92, 246' },
+            'amarillo': { '500': '#eab308', '600': '#ca8a04', 'rgb': '234, 179, 8' },
+            'obscuro': { '500': '#334155', '600': '#1e293b', 'rgb': '51, 65, 85' },
+            'verde': { '500': '#22c55e', '600': '#16a34a', 'rgb': '34, 197, 94' },
+            'anaranjado': { '500': '#f97316', '600': '#ea580c', 'rgb': '249, 115, 22' },
+            'gris': { '500': '#6b7280', '600': '#4b5563', 'rgb': '107, 114, 128' },
+            'beige': { '500': '#d2b48c', '600': '#b8976f', 'rgb': '210, 180, 140' },
+            'turquesa': { '500': '#14b8a6', '600': '#0d9488', 'rgb': '20, 184, 166' }
         };
+        // --- [FIN] CAMBIO ---
+
+        // --- [INICIO] CAMBIO: 'applyTheme' actualizado para fondo translúcido más fuerte (15%) ---
         window.applyTheme = function(themeName) {
             const themeColors = themes[themeName];
-            if (!themeColors) return console.error(`Tema "${themeName}" no econtrado.`);
+            if (!themeColors) {
+                console.error(`Tema "${themeName}" no econtrado.`);
+                // Aplicar tema por defecto si el guardado es inválido
+                if (themeName !== 'azul') return applyTheme('azul'); 
+                return;
+            }
             const root = document.documentElement;
+            
+            // Colores primarios (botones, etc.)
             root.style.setProperty('--color-primary-500', themeColors['500']);
             root.style.setProperty('--color-primary-600', themeColors['600']);
+            
+            // Nuevo: Color de fondo translúcido
+            // Se aplica un 15% de opacidad (0.15)
+            root.style.setProperty('--color-primary-bg', `rgba(${themeColors['rgb']}, 0.15)`); 
+            
             localStorage.setItem(THEME_KEY, themeName);
             closeModal(null, 'theme-modal'); // Cerrar modal de temas
         }
+        // --- [FIN] CAMBIO ---
+
         function loadTheme() {
             const savedTheme = localStorage.getItem(THEME_KEY);
             applyTheme(savedTheme && themes[savedTheme] ? savedTheme : 'azul');
@@ -945,17 +984,29 @@
         }
         
         // --- [INICIO] MODIFICACIÓN DE BUSCADORES ---
-        window.updateSearchFilter = function(value) {
-            // Guardar el estado del input
-            const input = document.getElementById('search-input');
-            const cursorPosition = input ? input.selectionStart : 0;
+        // Nuevo manejador para el buscador de inventario
+        window.handleInventorySearchInput = function(inputElement) {
+            if (!inputElement) return;
+            const value = inputElement.value;
+            const cursorPosition = inputElement.selectionStart;
+            const inputId = inputElement.id;
             
-            // Actualizar el estado global
             window.appState.searchFilter = value; 
-            
-            // Volver a renderizar, pasando el ID y la posición del cursor
-            renderApp('search-input', cursorPosition); 
+            renderApp(inputId, cursorPosition); 
         }
+        
+        // Nuevo manejador para el buscador del TPV
+        window.handlePOSSearchInput = function(inputElement) {
+            if (!inputElement) return;
+            const value = inputElement.value;
+            const cursorPosition = inputElement.selectionStart;
+            const inputId = inputElement.id;
+            
+            window.appState.pos.productSearch = value; 
+            renderApp(inputId, cursorPosition); 
+        }
+        // --- [FIN] MODIFICACIÓN DE BUSCADORES ---
+
         window.changePOSView = function(viewName) {
             // --- CAMBIO: No permitir ir a productos si no hay sesión ---
             if (viewName === 'products' && !window.appState.pos.activeSessionId) {
@@ -1181,18 +1232,6 @@
              if (!window.confirm || !window.confirm(`¿Vaciar el carrito?`)) return;
             window.appState.pos.cart = {}; showToast('Carrito vaciado.', 'info'); renderApp();
         }
-        window.updatePOSSearchFilter = function(value) {
-            // Guardar el estado del input
-            const input = document.getElementById('pos-search-input');
-            const cursorPosition = input ? input.selectionStart : 0;
-
-            // Actualizar el estado global
-            window.appState.pos.productSearch = value;
-            
-            // Volver a renderizar, pasando el ID y la posición del cursor
-            renderApp('pos-search-input', cursorPosition);
-        }
-        // --- [FIN] MODIFICACIÓN DE BUSCADORES ---
 
         // --- RENDERING VIEWS ---
         const loginPageHTML = `<div id="login-page" class="flex items-center justify-center min-h-screen p-4 bg-gray-50"><div class="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl"><h1 class="text-3xl font-bold text-gray-800 text-center mb-6">Inventario Pro</h1><h2 class="text-xl text-center text-gray-600 mb-8">Iniciar Sesión</h2><form onsubmit="simulateLogin(event)"><div class="mb-5"><label for="login-username" class="block text-sm font-medium text-gray-700 mb-1">Usuario</label><input type="text" id="login-username" required class="input-style"></div><div class="mb-6"><label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label><input type="password" id="login-password" required class="input-style"></div><p id="login-error" class="text-red-500 text-sm mb-4"></p><button type="submit" class="btn-primary w-full mb-4">Iniciar sesión</button></form><div class="text-center text-sm space-y-2"><a href="#" class="text-primary-500 hover:text-primary-600 transition">Crear cuenta</a><span class="text-gray-400"> | </span><a href="#" class="text-primary-500 hover:text-primary-600 transition">¿Olvidaste tu contraseña?</a></div></div></div>`;
@@ -1224,9 +1263,8 @@
                 return `<div class="table-row-container bg-white hover:bg-gray-50 border-b border-gray-200 text-sm md:text-base p-4 md:p-0 items-center"><div class="p-0 md:p-4 hidden md:flex items-center justify-center min-w-[200px]">${item.photoUrl ? `<img src="${item.photoUrl}" alt="${item.name}" class="product-image" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/555555?text=IMG'"/>` : `<div class="image-placeholder">SIN FOTO</div>`}</div><div class="hidden md:flex md:p-4 text-gray-500 truncate justify-center flex-col space-y-1 items-center" title="${item.id}"><span class="text-xs font-semibold">ID: ${item.id.substring(0, 8)}...</span>${item.barcode ? `<span class="text-xs text-gray-400">Cód: ${item.barcode}</span>` : `<span class="text-xs text-gray-400">Sin Código</span>`}</div><div class="p-0 md:p-4 font-extrabold text-lg text-gray-800 flex flex-col space-y-1 justify-center"><div class="flex items-center space-x-2"><span class="md:hidden">${item.photoUrl ? `<img src="${item.photoUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md inline mr-2 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/555555?text=IMG'" />` : `<span class="bg-gray-200 w-16 h-16 flex items-center justify-center text-xs rounded-md inline mr-2 shadow-sm">N/A</span>`}</span><span class="truncate">${item.name}</span></div><div class="mt-1 mb-2"><span class="text-primary-600 text-lg md:text-2xl font-black whitespace-nowrap">$${item.price}</span><span class="text-gray-500 text-xs ml-1 font-semibold"> (Venta)</span></div><div class="flex flex-col space-y-0 text-sm font-medium text-green-700 mt-1 md:mt-0 border-t pt-1 border-gray-100"><span id="inv-total-${item.id}" class="text-xs md:text-sm">Inversión Total: $<span class="font-bold">${totalInvestment}</span></span><span id="vent-total-${item.id}" class="text-xs md:text-sm">Venta Potencial: $<span class="font-bold">${totalSalesPotential}</span></span><span id="gan-total-${item.id}" class="text-xs md:text-sm">Ganancia Potencial: $<span class="font-bold">${totalProfitPotential}</span></span></div></div><div class="p-0 md:flex md:p-4 text-gray-600 justify-center items-center hidden">${item.category}</div><div class="p-0 md:flex md:p-4 flex-col space-y-1 justify-center items-center hidden"><span class="text-gray-500 font-medium text-sm md:text-base whitespace-nowrap">Costo: $${item.masterPrice}</span><span class="font-bold text-xs ${priceColor} whitespace-nowrap">Ganancia/U: $${profitText}</span></div><div class="p-0 md:flex md:p-4 text-gray-600 justify-center items-center hidden"><span id="stock-badge-${item.id}" class="py-1 px-3 inline-flex text-xs leading-5 font-semibold rounded-full ${stockClasses}">Stock: ${stockNum}</span></div><div class="p-0 md:flex md:p-4 flex space-x-3 pt-2 md:pt-0 pb-2 md:pb-0 justify-end items-center"><button onclick="openEditProductModal('${item.id}')" class="text-indigo-600 hover:text-indigo-900 transition text-xl" title="Editar">✏️</button><button onclick="openStockWarningModal('${item.id}', '${item.name}')" class="text-green-600 hover:text-green-900 transition text-xl" title="Añadir Stock">📦</button><button onclick="deleteItem('${item.id}', '${item.name}')" class="text-red-600 hover:text-red-900 transition text-xl" title="Eliminar">🗑️</button></div><div class="md:hidden flex flex-wrap justify-between items-center text-xs p-2 bg-gray-50 border-t"><span class="text-gray-600">Cat: ${item.category}</span><span class="text-green-600 font-medium">Venta/U: $${item.price}</span><span class="font-bold ${priceColor}">Ganancia/U: $${profitText}</span><span id="stock-badge-mobile-${item.id}" class="py-1 px-3 text-xs font-semibold rounded-full ${stockClasses}">Stock: ${stockNum}</span></div></div>`;
             }).join('');
             
-            // --- MODIFICACIÓN AQUÍ ---
-            // Se usa el valor de `window.appState.searchFilter` para rellenar el `value` del input
-            return `<div class="flex justify-between items-center mb-6"><h2 class="text-3xl font-semibold text-gray-800">Productos</h2><button onclick="openAddProductModal()" class="btn-primary flex items-center space-x-1 py-2 px-3"><span>➕</span><span class="hidden sm:inline">Agregar Producto</span></button></div><div class="mb-8"><label for="search-input" class="block text-sm font-medium text-gray-700 mb-1">Buscar por nombre o código...</label><div><input type="text" id="search-input" oninput="updateSearchFilter(this.value)" placeholder="Escriba para buscar..." class="input-style shadow-lg w-full" value="${window.appState.searchFilter}"></div></div>
+            // --- CAMBIO DE FUNCIÓN E ID ---
+            return `<div class="flex justify-between items-center mb-6"><h2 class="text-3xl font-semibold text-gray-800">Productos</h2><button onclick="openAddProductModal()" class="btn-primary flex items-center space-x-1 py-2 px-3"><span>➕</span><span class="hidden sm:inline">Agregar Producto</span></button></div><div class="mb-8"><label for="inventory-search-input" class="block text-sm font-medium text-gray-700 mb-1">Buscar por nombre o código...</label><div><input type="text" id="inventory-search-input" oninput="handleInventorySearchInput(this)" placeholder="Escriba para buscar..." class="input-style shadow-lg w-full" value="${window.appState.searchFilter}"></div></div>
             <div class="bg-white shadow-lg rounded-xl overflow-x-auto border border-gray-100"><div class="min-w-full inline-block align-middle"><div class="table-row-header bg-gray-50 font-bold text-gray-600 uppercase text-xs tracking-wider border-b p-4"><div class="flex items-center justify-center">Foto</div><div class="flex items-center justify-center">ID / Código</div><div class="flex items-center">Nombre / Precio Venta / Totales</div><div class="flex items-center justify-center">Categoría</div><div class="flex items-center justify-center">Costo / Ganancia (U)</div><div class="flex items-center justify-center">Stock</div><div class="flex items-center justify-end">Acciones</div></div><div id="inventory-table-body" class="divide-y divide-gray-200">${tableBody.length > 0 ? tableBody : '<div class="p-6 text-center text-gray-500">No hay productos.</div>'}</div></div></div><p class="text-sm text-gray-500 mt-4">Total de Productos: ${products.length}</p>`;
         }
         function renderHistoryLog(invId) {
@@ -1249,19 +1287,16 @@
             const searchValue = window.appState.pos.productSearch.toLowerCase();
             const filteredProducts = allProducts.filter(p => p.stock > 0 && (p.name.toLowerCase().includes(searchValue) || (p.barcode && p.barcode.toLowerCase().includes(searchValue)) || p.category.toLowerCase().includes(searchValue)));
             
-            // --- CAMBIO: Lógica para habilitar/deshabilitar botones según la sesión ---
             const hasActiveSession = !!window.appState.pos.activeSessionId;
             const productButtonClasses = hasActiveSession 
                 ? 'text-gray-700 hover:bg-gray-200' 
                 : 'opacity-50 cursor-not-allowed text-gray-400';
             const productButtonDisabled = hasActiveSession ? '' : 'disabled';
-            // --- FIN CAMBIO ---
 
             const posMenu = `<div class="flex-shrink-0 w-full lg:w-48 bg-gray-50 p-4 border-r border-gray-200"><h2 class="text-xl font-black text-gray-800 mb-6 border-b pb-3">TPV Pro</h2><nav class="space-y-2"><button onclick="changePOSView('dashboard')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'dashboard' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-200'}"><span>📊</span> <span>Dashboard</span></button><button onclick="changePOSView('products')" ${productButtonDisabled} class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'products' ? 'bg-primary-500 text-white' : productButtonClasses}"><span>📦</span> <span>Productos</span></button><button onclick="changePOSView('sales')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition ${posView === 'sales' ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-gray-200'}"><span>📜</span> <span>Ventas Recientes</span></button><div class="h-px bg-gray-200 my-4"></div><button onclick="changeView('inventory')" class="w-full text-left py-2 px-3 rounded-lg flex items-center space-x-2 transition text-red-600 hover:bg-red-50"><span>🚪</span> <span>Volver a Inventarios</span></button></nav></div>`;
             
             let mainContent;
 
-            // --- CAMBIO: Actualizar renderizado del Dashboard ---
             const renderPOSDashboard = () => {
                 const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
                 const lowStockCount = allProducts.filter(p => p.stock <= 10 && p.stock > 0).length;
@@ -1286,19 +1321,17 @@
 
                 return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">${sessionTitle}</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500"><p class="text-sm text-gray-500 font-medium">Ventas de la Sesión</p><p class="text-3xl font-black text-gray-800 mt-1">$${totalSales}</p><p class="text-xs text-gray-400 mt-2">${salesCount} transacciones</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-500"><p class="text-sm text-gray-500 font-medium">Stock Total</p><p class="text-3xl font-black text-gray-800 mt-1">${totalStock}</p><p class="text-xs text-gray-400 mt-2">Unidades totales</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500"><p class="text-sm text-gray-500 font-medium">Bajo Inventario</p><p class="text-3xl font-black ${lowStockCount > 0 ? 'text-red-500' : 'text-gray-800'} mt-1">${lowStockCount}</p><p class="text-xs text-gray-400 mt-2">Productos $\le 10$ unidades</p></div></div>${sessionControls}<h3 class="text-xl font-semibold text-gray-800 mb-4">Ventas de la Sesión Actual (${salesCount})</h3><div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">${salesCount > 0 ? `<table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hora</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Productos</th><th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total</th></tr></thead><tbody class="bg-white divide-y divide-gray-200">${salesListHTML}</tbody></table>` : salesListHTML}</div></div></div>`;
             }
-            // --- FIN CAMBIO DASHBOARD ---
 
+            // --- [INICIO] CAMBIO: renderProductGallery modificado ---
+            // Ahora solo renderiza la cuadrícula de productos, no el buscador
             const renderProductGallery = () => {
                 const productGrid = filteredProducts.map(p => { const invName = (window.appState.inventories.find(i => i.id === p.inventoryId)?.name.substring(0, 5) || 'N/A'); return `<div onclick="addProductToCart(${JSON.stringify(p).replace(/'/g, '&#39;').replace(/"/g, '&#34;')}, 1)" class="pos-product-card bg-white h-full relative"><span class="absolute top-2 right-2 text-xs text-gray-400">Inv: ${invName}</span><div class="w-full h-24 sm:h-32 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden mb-2">${p.photoUrl ? `<img src="${p.photoUrl}" alt="${p.name}" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/555555?text=IMG'"/>` : `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`}</div><div class="flex flex-col flex-1 mt-1"><p class="text-sm font-medium text-gray-800 truncate" title="${p.name}">${p.name}</p><div class="mt-1 flex justify-between items-end"><span class="text-xl font-bold text-primary-500">$${p.price}</span><span class="text-xs font-semibold ${p.stock <= 10 ? 'text-red-500' : 'text-gray-500'}">Stock: ${p.stock}</span></div></div></div>`; }).join('');
                 
-                // --- MODIFICACIÓN AQUÍ ---
-                // Se usa el valor de `window.appState.pos.productSearch` para rellenar el `value` del input
-                return `<div class="pos-main-content-wrapper"><div class="flex-shrink-0 p-4 bg-white border-b border-gray-200"><div class="text-lg font-bold text-gray-800 mb-3">Galería de Productos</div><div><input type="text" id="pos-search-input" oninput="updatePOSSearchFilter(this.value)" placeholder="Buscar producto..." class="input-style shadow-sm w-full" value="${window.appState.pos.productSearch}"></div></div>
-                
-                <div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">${productGrid.length > 0 ? productGrid : '<div class="col-span-full p-8 text-center text-gray-500 bg-gray-100 rounded-xl">No se encontraron productos.</div>'}</div></div></div>`;
+                // Devuelve solo la cuadrícula
+                return `<div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">${productGrid.length > 0 ? productGrid : '<div class="col-span-full p-8 text-center text-gray-500 bg-gray-100 rounded-xl">No se encontraron productos.</div>'}</div></div>`;
             };
+            // --- [FIN] CAMBIO ---
 
-            // --- [INICIO] CAMBIO: Renderizar historial de sesiones cerradas (con onclick) ---
             const renderPOSTransactions = () => {
                 const closedSessions = window.appState.pos.salesSessions.filter(s => s.status === 'closed').sort((a, b) => b.timestamp - a.timestamp);
                 const salesList = closedSessions.map(s => { 
@@ -1316,16 +1349,58 @@
                 }).join('');
                 return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">Historial de Ventas (Sesiones Cerradas)</h2><div class="space-y-4">${salesList.length > 0 ? salesList : '<div class="p-8 text-center text-gray-500 bg-white rounded-xl shadow-lg">No hay sesiones de venta cerradas.</div>'}</div></div></div>`;
             }
-            // --- [FIN] CAMBIO ---
 
-            if (posView === 'dashboard') mainContent = renderPOSDashboard();
-            else if (posView === 'products') mainContent = renderProductGallery();
-            else if (posView === 'sales') mainContent = renderPOSTransactions();
-            else mainContent = renderPOSDashboard();
+            // --- [INICIO] CAMBIO: Se ensambla el mainContent con el buscador ---
+            // Define el HTML del buscador una vez
+            const posSearchbarHTML = (id) => `
+                <div class="flex-shrink-0 p-4 bg-white border-b border-gray-200">
+                    <div class="text-lg font-bold text-gray-800 mb-3">Galería de Productos</div>
+                    <div>
+                        <input type="text" id="${id}" 
+                               oninput="handlePOSSearchInput(this)" 
+                               placeholder="Buscar producto..." 
+                               class="input-style shadow-sm w-full" 
+                               value="${window.appState.pos.productSearch}">
+                    </div>
+                </div>`;
+            
+            // Asigna el contenido principal según la vista
+            if (posView === 'dashboard') {
+                mainContent = renderPOSDashboard();
+            } else if (posView === 'products') {
+                // Combina el buscador (con ID única) + la cuadrícula de productos
+                mainContent = `
+                    <div class="pos-main-content-wrapper">
+                        ${posSearchbarHTML('pos-search-input-desktop')} 
+                        ${renderProductGallery()}
+                    </div>`;
+            } else if (posView === 'sales') {
+                mainContent = renderPOSTransactions();
+            } else {
+                mainContent = renderPOSDashboard();
+            }
+            // --- [FIN] CAMBIO ---
 
             const cartSection = `<div class="bg-gray-100 border-l border-gray-200 flex flex-col"><div class="flex-shrink-0 bg-white p-4 border-b"><h3 class="text-2xl font-bold text-gray-800">Carrito</h3></div><div class="p-4 space-y-3">${cartItems.length > 0 ? cartItems.map(item => `<div class="bg-white p-3 rounded-lg shadow-sm flex items-center justify-between border-l-4 border-primary-500"><div class="flex-1 min-w-0 pr-2"><p class="font-semibold text-gray-800 truncate" title="${item.name}">${item.name}</p><p class="text-xs text-gray-500">$${item.price.toFixed(2)} c/u (Stock: ${item.maxStock})</p></div><div class="flex items-center space-x-2"><button onclick="updateCartQuantity('${item.id}', -1)" class="text-gray-600 hover:text-red-500 font-bold text-xl leading-none">-</button><span class="font-bold text-lg text-primary-600 w-6 text-center">${item.quantity}</span><button onclick="updateCartQuantity('${item.id}', 1)" class="text-gray-600 hover:text-green-500 font-bold text-xl leading-none">+</button></div></div>`).join('') : `<div class="text-center text-gray-500 p-8"><span class="block text-4xl mb-2">🛒</span><p>Añade productos para comenzar.</p></div>`}</div><div classpre="flex-shrink-0 bg-white p-4 shadow-2xl border-t border-gray-200 mt-auto"><div class="space-y-2 mb-4"><div class="flex justify-between text-sm text-gray-600"><span>Subtotal:</span><span>$${totals.subtotal}</span></div><div class="flex justify-between text-sm text-gray-600 border-b pb-2"><span>IVA (0%):</span><span>$${totals.tax}</span></div><div class="flex justify-between text-2xl font-black text-gray-800"><span>TOTAL:</span><span>$${totals.total}</span></div></div><button onclick="processSale()" ${cartItems.length === 0 || !hasActiveSession ? 'disabled' : ''} class="${cartItems.length === 0 || !hasActiveSession ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'} text-white font-extrabold py-3 rounded-xl w-full text-lg shadow-lg transition duration-200">Procesar Pago ($${totals.total})</button><button onclick="clearCart()" class="text-red-500 hover:text-red-600 text-sm mt-3 w-full">Vaciar Carrito</button></div></div>`;
             
-            // --- [INICIO] MODIFICACIÓN PARA SCROLL MÓVIL ---
+            // --- [INICIO] MODIFICACIÓN PARA ENSAMBLADO MÓVIL ---
+            // Se crea el contenido móvil por separado para insertar el buscador correcto
+            let mobileMainContent;
+            if (posView === 'dashboard') {
+                mobileMainContent = renderPOSDashboard();
+            } else if (posView === 'products') {
+                // Combina el buscador (con ID MÓVIL) + la cuadrícula
+                mobileMainContent = `
+                    <div class="pos-main-content-wrapper">
+                        ${posSearchbarHTML('pos-search-input-mobile')} 
+                        ${renderProductGallery()}
+                    </div>`;
+            } else if (posView === 'sales') {
+                mobileMainContent = renderPOSTransactions();
+            } else {
+                mobileMainContent = renderPOSDashboard();
+            }
+
             return `<div class="pos-full-screen"><header class="bg-white shadow-md flex-shrink-0 flex items-center justify-between p-3 border-b"><div class="text-xl font-black text-gray-800">TPV Pro</div><div class="flex items-center space-x-3"><span class="text-sm text-gray-500 hidden sm:block">Usuario: Admin</span><div class="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center text-white font-bold text-sm">A</div></div></header><div class="pos-grid-container flex-1"><div class="hidden lg:flex">${posMenu}</div>
             
             <div class="hidden lg:block h-full">${mainContent}</div>
@@ -1342,10 +1417,11 @@
                 </div>
 
                 <div class="${posView !== 'cart' ? 'block' : 'hidden'} max-h-[80vh] overflow-y-auto">
-                    ${mainContent}
+                    ${mobileMainContent}
                 </div>
             </div>
             </div><footer class="bg-white border-t border-gray-100 text-xs text-gray-400 text-center p-2 flex-shrink-0">© 2025 TPV Pro.</footer></div>`;
+            // --- [FIN] MODIFICACIÓN ---
         }
         // --- [FIN] FUNCIÓN renderPOSView() ACTUALIZADA ---
 
@@ -1357,7 +1433,8 @@
             
             // --- Lógica para guardar el estado del scroll (para TPV) ---
             let scrollTops = {};
-            if (focusedInputId && (focusedInputId === 'pos-search-input')) {
+            // --- CAMBIO: Detectar ambos IDs del buscador TPV ---
+            if (focusedInputId && (focusedInputId === 'pos-search-input-desktop' || focusedInputId === 'pos-search-input-mobile')) {
                  const posScrollArea = document.querySelector('.pos-scroll-area');
                  if (posScrollArea) {
                      scrollTops['pos-scroll-area'] = posScrollArea.scrollTop;
