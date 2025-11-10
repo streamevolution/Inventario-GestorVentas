@@ -9,6 +9,8 @@
     
     <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -204,7 +206,7 @@
                             <span>Síguenos en Facebook</span>
                         </button>
                         <button class="flex items-center space-x-4 w-full text-left p-4 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:opacity-90 text-white font-semibold shadow-md transition duration-150" onclick="window.open('https://instagram.com', '_blank')">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.053 1.805.247 2.227.421.56.22 1.003.504 1.448.95.446.446.73.888.95 1.448.174.422.368 1.057.421 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.053 1.17-.247 1.805-.421 2.227-.22.56-.504 1.003-.95 1.448-.446.446-.888.73-1.448.95-.422.174-1.057.368-2.227.421-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.053-1.805-.247-2.227-.421-.56-.22-1.003-.504-1.448-.95-.446.446-.73-.888-.95-1.448-.174-.422-.368-1.057-.421-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.053 1.17.247 1.805.421-2.227.22-.56.504-1.003.95-1.448.446.446.888.73 1.448.95.422-.174-1.057.368-2.227.421C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.17 0-3.515.012-4.74.068-1.107.05-1.666.236-1.993.364-.403.15-.71.35-1.02.66-.31.31-.51.618-.66 1.02-.128.327-.314.886-.364 1.993-.056 1.225-.068 1.57-.068 4.74s.012 3.515.068 4.74c.05 1.107.236 1.666.364 1.993.15.403.35.71.66 1.02.31.31.618.51 1.02.66.327.128.886.314 1.993.364 1.225.056 1.57.068 4.74.068s3.515-.012 4.74-.068c1.107-.05 1.666-.236 1.993-.364.403-.15.71.35 1.02-.66.31-.31.51-.618-.66-1.02.128-.327-.314.886-.364-1.993.056-1.225.068-1.57.068-4.74s-.012-3.515-.068-4.74c-.05-1.107-.236-1.666-.364-1.993-.15-.403-.35.71-.66-1.02-.31-.31-.618-.51-1.02-.66-.327-.128-.886-.314-1.993-.364C15.515 3.793 15.17 3.783 12 3.783zM12 7.88a4.12 4.12 0 100 8.24 4.12 4.12 0 000-8.24zM12 14.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM18.192 5.25a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" /></svg>
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.053 1.805.247 2.227.421.56.22 1.003.504 1.448.95.446.446.73.888.95 1.448.174.422.368 1.057.421 2.227.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.053 1.17-.247 1.805-.421 2.227-.22.56-.504 1.003-.95 1.448-.446.446-.888.73-1.448.95-.422.174-1.057.368-2.227.421-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.053-1.805-.247-2.227-.421-.56-.22-1.003-.504-1.448.95-.446.446-.73-.888-.95-1.448-.174-.422-.368-1.057-.421-2.227-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.053 1.17.247 1.805.421-2.227.22-.56.504 1.003.95-1.448.446.446.888.73 1.448.95.422.174-1.057.368-2.227.421C8.416 2.175 8.796 2.163 12 2.163zm0 1.62c-3.17 0-3.515.012-4.74.068-1.107.05-1.666.236-1.993.364-.403.15-.71.35-1.02.66-.31.31-.51.618-.66 1.02-.128.327-.314.886-.364 1.993-.056 1.225-.068 1.57-.068 4.74s.012 3.515.068 4.74c.05 1.107.236 1.666.364 1.993.15.403.35.71.66 1.02.31.31.618.51 1.02.66.327.128.886.314 1.993.364 1.225.056 1.57.068 4.74.068s3.515-.012 4.74-.068c1.107-.05 1.666-.236 1.993-.364.403-.15.71.35 1.02-.66.31-.31.51-.618-.66-1.02.128-.327-.314.886-.364-1.993.056-1.225.068-1.57.068-4.74s-.012-3.515-.068-4.74c-.05-1.107-.236-1.666-.364-1.993-.15-.403-.35.71-.66-1.02-.31-.31-.618-.51-1.02-.66-.327-.128-.886-.314-1.993-.364C15.515 3.793 15.17 3.783 12 3.783zM12 7.88a4.12 4.12 0 100 8.24 4.12 4.12 0 000-8.24zM12 14.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM18.192 5.25a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" /></svg>
                             <span>Síguenos en Instagram</span>
                         </button>
                     </div>
@@ -388,6 +390,69 @@
             </div>
         </div>
     </div>
+
+    <div id="transaction-details-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[125] p-4" onclick="closeModal(event, 'transaction-details-modal')">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6 md:p-8" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4 border-b pb-3">
+                <h2 class="text-2xl font-bold text-gray-800">Detalle de Venta: #<span id="transaction-details-title" class="text-primary-500"></span></h2>
+                <button onclick="closeModal(null, 'transaction-details-modal')" class="text-gray-400 hover:text-gray-600 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div id="transaction-details-summary" class="bg-gray-50 rounded-lg p-4 space-y-2 mb-6 border">
+            </div>
+            
+            <h3 class="text-lg font-semibold text-gray-700 mb-3">Productos Vendidos</h3>
+            <div class="max-h-[50vh] overflow-y-auto pr-2 pos-scrollbar">
+                <ul id="transaction-details-list" class="space-y-3">
+                </ul>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button type="button" onclick="closeModal(null, 'transaction-details-modal')" class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="ticket-whatsapp-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-[130] p-4" onclick="closeModal(event, 'ticket-whatsapp-modal')">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6 md:p-8" onclick="event.stopPropagation()">
+            
+            <div id="ticket-prompt-step">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                    <span class="text-green-500 mr-3 text-3xl">✔</span> Venta Completada
+                </h2>
+                <p class="text-gray-700 mb-6">¿Desea enviar un ticket de venta por WhatsApp?</p>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" onclick="handleTicketResponse(false)" class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">No</button>
+                    <button type="button" onclick="handleTicketResponse(true)" class="btn-primary">Sí, enviar</button>
+                </div>
+            </div>
+
+            <div id="whatsapp-prompt-step" class="hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Enviar Ticket por WhatsApp</h2>
+                <form id="whatsapp-form" onsubmit="handleWhatsAppSubmit(event)">
+                    <div class="mb-4">
+                        <label for="whatsapp-number" class="block text-sm font-medium text-gray-700 mb-1">Número de WhatsApp</label>
+                        <div class="flex">
+                            <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">+52 1</span>
+                            <input type="tel" id="whatsapp-number" required class="input-style rounded-l-none" placeholder="Ej: 5512345678" pattern="[0-9]{10}">
+                        </div>
+                         <p class="text-xs text-gray-500 mt-1">Ingrese los 10 dígitos del número.</p>
+                    </div>
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" onclick="closeModal(null, 'ticket-whatsapp-modal'); handleTicketResponse(false);" class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded-lg hover:bg-gray-300 transition">Cancelar</button>
+                        <button type="submit" class="btn-primary bg-green-500 hover:bg-green-600">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
     <div id="message-box" class="space-y-3">
         </div>
 
@@ -401,6 +466,9 @@
             currentInventoryId: localStorage.getItem('currentInventoryId') || null,
             currentView: 'inventory',
             searchFilter: '',
+            // --- [INICIO] CAMBIO SOLICITADO: Contador global de ventas ---
+            globalSalesCounter: 0, 
+            // --- [FIN] CAMBIO SOLICITADO ---
             pendingStockEntry: { itemId: null, quantity: 0, itemName: '' },
             scannerMode: null, // 'product', 'search', o 'pos_search'
             showStockWarning: localStorage.getItem('dismissStockWarning') !== 'true',
@@ -409,11 +477,10 @@
                 cart: {}, 
                 productSearch: '', 
                 currentPOSView: 'dashboard',
-                // --- CAMBIO: ESTRUCTURA DE VENTAS ---
-                salesSessions: [], // Almacena todas las sesiones
-                activeSessionId: null, // ID de la sesión activa
-                // --- FIN CAMBIO ---
-                allProducts: []
+                salesSessions: [], 
+                activeSessionId: null, 
+                allProducts: [],
+                lastCompletedTransaction: null 
             }
         };
 
@@ -422,6 +489,9 @@
         const HISTORY_KEY = 'inventoryProHistory';
         const POS_KEY = 'inventoryProPOS';
         const THEME_KEY = 'inventoryProTheme';
+        // --- [INICIO] CAMBIO SOLICITADO: Nueva clave para el contador ---
+        const INVENTORY_PRO_GLOBAL_COUNTER = 'inventoryProGlobalCounter';
+        // --- [FIN] CAMBIO SOLICITADO ---
         const appContainer = document.getElementById('app-container');
         let isScannerRunning = false;
 
@@ -434,13 +504,11 @@
                 window.appState.products = prodData ? JSON.parse(prodData) : {};
                 const histData = localStorage.getItem(HISTORY_KEY);
                 window.appState.history = histData ? JSON.parse(histData) : {};
-                // --- CAMBIO: Cargar sesiones de venta ---
                 const posData = localStorage.getItem(POS_KEY);
                 if (posData) {
                     const parsedPos = JSON.parse(posData);
                     window.appState.pos.salesSessions = parsedPos.salesSessions || [];
                     window.appState.pos.activeSessionId = parsedPos.activeSessionId || null;
-                    // Asegurarse de que no haya sesiones 'open' huérfanas al cargar
                     if (window.appState.pos.activeSessionId) {
                         const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
                         if (!activeSession || activeSession.status !== 'open') {
@@ -448,7 +516,12 @@
                         }
                     }
                 }
-                // --- FIN CAMBIO ---
+                
+                // --- [INICIO] CAMBIO SOLICITADO: Cargar contador global ---
+                const counterData = localStorage.getItem(INVENTORY_PRO_GLOBAL_COUNTER);
+                window.appState.globalSalesCounter = counterData ? parseInt(counterData, 10) : 0;
+                // --- [FIN] CAMBIO SOLICITADO ---
+
                 updateAllProductsForPOS();
             } catch (e) {
                 console.error("Error al cargar datos:", e);
@@ -461,12 +534,15 @@
                 localStorage.setItem(INVENTORIES_KEY, JSON.stringify(window.appState.inventories));
                 localStorage.setItem(PRODUCTS_KEY, JSON.stringify(window.appState.products));
                 localStorage.setItem(HISTORY_KEY, JSON.stringify(window.appState.history));
-                // --- CAMBIO: Guardar sesiones de venta ---
                 localStorage.setItem(POS_KEY, JSON.stringify({ 
                     salesSessions: window.appState.pos.salesSessions, 
                     activeSessionId: window.appState.pos.activeSessionId 
                 }));
-                // --- FIN CAMBIO ---
+                
+                // --- [INICIO] CAMBIO SOLICITADO: Guardar contador global ---
+                localStorage.setItem(INVENTORY_PRO_GLOBAL_COUNTER, window.appState.globalSalesCounter.toString());
+                // --- [FIN] CAMBIO SOLICITADO ---
+
                 if (window.appState.currentInventoryId) {
                     localStorage.setItem('currentInventoryId', window.appState.currentInventoryId);
                 } else {
@@ -483,13 +559,11 @@
         
         // --- UTILIDADES ---
         
-        // --- [INICIO] FUNCIÓN showToast MODIFICADA ---
         window.showToast = function(message, type = 'info') {
             const box = document.getElementById('message-box');
             let color = '';
             let toast = document.createElement('div');
             
-            // Clases base actualizadas para flex y botón de cierre
             const baseClasses = 'text-white p-4 rounded-lg shadow-xl mb-3 transition transform duration-300 ease-out translate-x-full opacity-0 flex justify-between items-start';
             
             if (type === 'success') color = 'bg-green-500';
@@ -503,23 +577,19 @@
                  if (primaryColor) toast.style.backgroundColor = primaryColor;
             }
 
-            // Función para cerrar el toast
-            // Se define aquí para que el timeout y el botón puedan usarla.
             const closeToast = () => {
-                if (!toast) return; // Ya se cerró
+                if (!toast) return; 
                 toast.classList.add('translate-x-full', 'opacity-0');
                 setTimeout(() => {
                     if (toast && toast.parentNode) {
                         toast.parentNode.removeChild(toast);
                     }
-                    toast = null; // Limpiar referencia
-                }, 300); // Duración de la transición
+                    toast = null; 
+                }, 300); 
             };
 
-            // Timeout de auto-cierre (1 segundo)
-            const autoCloseTimeout = setTimeout(closeToast, 1000); // 1000ms = 1 segundo
+            const autoCloseTimeout = setTimeout(closeToast, 1000); 
 
-            // Contenido con botón de cerrar
             toast.innerHTML = `
                 <div class="mr-3">
                     <p class="font-bold">${type.charAt(0).toUpperCase() + type.slice(1)}:</p>
@@ -530,27 +600,24 @@
                 </button>
             `;
             
-            // Añadir listener al botón de cerrar
             const closeButton = toast.querySelector('button');
             if (closeButton) {
                 closeButton.onclick = (e) => {
                     e.stopPropagation();
-                    clearTimeout(autoCloseTimeout); // Cancelar el auto-cierre
-                    closeToast(); // Cerrar inmediatamente
+                    clearTimeout(autoCloseTimeout); 
+                    closeToast(); 
                 };
             }
 
             box.appendChild(toast);
             
-            // Mostrar el toast
             setTimeout(() => {
-                if (toast) { // Comprobar si no se cerró antes de mostrarse
+                if (toast) { 
                     toast.classList.remove('translate-x-full', 'opacity-0');
                     toast.classList.add('translate-x-0', 'opacity-100');
                 }
             }, 10);
         }
-        // --- [FIN] FUNCIÓN showToast MODIFICADA ---
 
         window.closeModal = function(event, modalId) {
             const modal = document.getElementById(modalId);
@@ -578,11 +645,11 @@
                 console.log("Escáner detenido.");
             }
             closeModal(null, 'scanner-modal');
-            window.appState.scannerMode = null; // Limpiar modo
+            window.appState.scannerMode = null; 
         }
         window.closeScannerModal = function(event) {
             if (!event || event.target.id === 'scanner-modal') {
-                stopScanner(); // Llamar a la función principal que detiene y limpia
+                stopScanner(); 
             }
         }
         function startScanner() {
@@ -621,20 +688,14 @@
                 isScannerRunning = true;
                 document.getElementById('scanner-feedback').textContent = 'Apunte la cámara al código.';
             });
-
-            // --- [ELIMINADO] Listener de Detección ---
-            // Se elimina Quagga.onDetected() porque es propenso a errores
-            // y dispara en lecturas de baja confianza (códigos "random").
             
-            // --- Variables para consenso ---
             let detectedCodes = [];
-            const CONSENSUS_THRESHOLD = 3; // Número de lecturas idénticas seguidas
+            const CONSENSUS_THRESHOLD = 3; 
             let lastCode = null;
 
             Quagga.onProcessed(function(result) {
                 var drawingCtx = Quagga.canvas.ctx.overlay, drawingCanvas = Quagga.canvas.dom.overlay;
                 if (result) {
-                    // --- Lógica de Dibujo (Existente) ---
                     if (result.boxes) {
                         drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
                         result.boxes.filter(box => box !== result.box).forEach(box => {
@@ -644,27 +705,19 @@
                     if (result.box) Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
                     if (result.codeResult && result.codeResult.code) Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
                     
-                    // --- LÓGICA DE CONSENSO (NUEVA) ---
-                    // Se usa onProcessed para validar el código múltiples veces
                     if (result.codeResult && result.codeResult.code) {
                         const code = result.codeResult.code;
                         
-                        // Si el código es diferente al último, resetea el contador
                         if (code !== lastCode) {
-                            detectedCodes = []; // Reset array
+                            detectedCodes = []; 
                             lastCode = code;
                         }
                         
                         detectedCodes.push(code);
 
-                        // Si hemos alcanzado el umbral de consenso
                         if (detectedCodes.length >= CONSENSUS_THRESHOLD) {
-                            // ¡Consenso alcanzado!
-                            
-                            // Capturar el modo ANTES de llamar a stopScanner()
                             const mode = window.appState.scannerMode; 
                             
-                            // Detener el escáner
                             stopScanner(); 
                             
                             console.log(`Código detectado (con consenso): ${code}, Modo: ${mode}`);
@@ -673,40 +726,36 @@
                                 document.getElementById('barcode').value = code;
                                 showToast('Código de barras escaneado.', 'success');
                             } else if (mode === 'search') {
-                                const searchInput = document.getElementById('inventory-search-input'); // --- CAMBIO DE ID ---
+                                const searchInput = document.getElementById('inventory-search-input'); 
                                 if (searchInput) {
                                     searchInput.value = code;
-                                    handleInventorySearchInput(searchInput); // --- CAMBIO DE FUNCIÓN ---
+                                    handleInventorySearchInput(searchInput); 
                                     showToast(`Buscando producto: ${code}`, 'info');
                                 }
                             } else if (mode === 'pos_search') {
-                                // Intentar con ambos IDs
                                 const posSearchInput = document.getElementById('pos-search-input-mobile') || document.getElementById('pos-search-input-desktop');
                                 if (posSearchInput) {
                                     posSearchInput.value = code;
-                                    handlePOSSearchInput(posSearchInput); // --- CAMBIO DE FUNCIÓN ---
+                                    handlePOSSearchInput(posSearchInput); 
                                     showToast(`Buscando en TPV: ${code}`, 'info');
                                 }
                             }
                             
-                            // Limpiar para la próxima
                             detectedCodes = [];
                             lastCode = null;
                         }
                     }
-                    // --- FIN LÓGICA DE CONSENSO ---
                 }
             });
         }
         window.openScannerModal = function(mode) {
             if (!mode) return console.error("Modo de escáner no especificado.");
-            window.appState.scannerMode = mode; // 'product', 'search', o 'pos_search'
+            window.appState.scannerMode = mode; 
             const modal = document.getElementById('scanner-modal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             setTimeout(startScanner, 100); 
         }
-        // --- FIN LÓGICA DEL ESCÁNER ---
 
         // --- CALCULO DE GANANCIAS ---
         window.calculateProfit = function() {
@@ -733,7 +782,6 @@
         
         // --- LÓGICA DE TEMAS ---
         
-        // --- [INICIO] CAMBIO: Objeto 'themes' actualizado con valores RGB ---
         const themes = {
             'azul': { '500': '#4f46e5', '600': '#4338ca', 'rgb': '79, 70, 229' },
             'rosa': { '500': '#ec4899', '600': '#db2777', 'rgb': '236, 72, 153' },
@@ -747,31 +795,23 @@
             'beige': { '500': '#d2b48c', '600': '#b8976f', 'rgb': '210, 180, 140' },
             'turquesa': { '500': '#14b8a6', '600': '#0d9488', 'rgb': '20, 184, 166' }
         };
-        // --- [FIN] CAMBIO ---
 
-        // --- [INICIO] CAMBIO: 'applyTheme' actualizado para fondo translúcido más fuerte (15%) ---
         window.applyTheme = function(themeName) {
             const themeColors = themes[themeName];
             if (!themeColors) {
                 console.error(`Tema "${themeName}" no econtrado.`);
-                // Aplicar tema por defecto si el guardado es inválido
                 if (themeName !== 'azul') return applyTheme('azul'); 
                 return;
             }
             const root = document.documentElement;
             
-            // Colores primarios (botones, etc.)
             root.style.setProperty('--color-primary-500', themeColors['500']);
             root.style.setProperty('--color-primary-600', themeColors['600']);
-            
-            // Nuevo: Color de fondo translúcido
-            // Se aplica un 15% de opacidad (0.15)
             root.style.setProperty('--color-primary-bg', `rgba(${themeColors['rgb']}, 0.15)`); 
             
             localStorage.setItem(THEME_KEY, themeName);
-            closeModal(null, 'theme-modal'); // Cerrar modal de temas
+            closeModal(null, 'theme-modal'); 
         }
-        // --- [FIN] CAMBIO ---
 
         function loadTheme() {
             const savedTheme = localStorage.getItem(THEME_KEY);
@@ -922,14 +962,12 @@
                 products[index].stock = newStock;
                 history.push({ id: generateId(), type: 'ENTRADA', itemId: itemId, itemName: itemName, details: `ENTRADA: ${quantity} unidades. Stock final: ${newStock}`, timestamp: new Date().getTime() });
                 saveData();
-                // --- Actualización DOM ---
                 const masterPrice = parseFloat(product.masterPrice) || 0, price = parseFloat(product.price) || 0, profit = parseFloat(product.profit) || 0;
                 const newInvestment = (newStock * masterPrice).toFixed(2), newSalesPotential = (newStock * price).toFixed(2), newProfitPotential = (newStock * profit).toFixed(2);
                 const updateStockBadge = (element, stock) => { if (!element) return; let stockClasses = (stock <= 10) ? 'bg-red-500 text-white' : (stock <= 30) ? 'bg-orange-400 text-white' : 'bg-green-500 text-white'; element.textContent = `Stock: ${stock}`; element.className = element.className.split(' ').filter(cls => !cls.startsWith('bg-') && !cls.startsWith('text-')).join(' ') + ` ${stockClasses}`; };
                 updateStockBadge(document.getElementById(`stock-badge-${itemId}`), newStock); updateStockBadge(document.getElementById(`stock-badge-mobile-${itemId}`), newStock);
                 const updateMetric = (id, label, value) => { const element = document.getElementById(id); if (element) element.innerHTML = `${label}: $<span class="font-bold">${value}</span>`; };
                 updateMetric(`inv-total-${itemId}`, 'Inversión Total', newInvestment); updateMetric(`vent-total-${itemId}`, 'Venta Potencial', newSalesPotential); updateMetric(`gan-total-${itemId}`, 'Ganancia Potencial', newProfitPotential);
-                // --- Fin Actualización DOM ---
                 showToast(`Se añadieron ${quantity} unidades a ${itemName}.`, 'success');
             } else { showToast('Error: Producto no encontrado.', 'error'); }
             window.appState.pendingStockEntry = { itemId: null, quantity: 0, itemName: '' };
@@ -983,8 +1021,6 @@
             renderApp();
         }
         
-        // --- [INICIO] MODIFICACIÓN DE BUSCADORES ---
-        // Nuevo manejador para el buscador de inventario
         window.handleInventorySearchInput = function(inputElement) {
             if (!inputElement) return;
             const value = inputElement.value;
@@ -995,7 +1031,6 @@
             renderApp(inputId, cursorPosition); 
         }
         
-        // Nuevo manejador para el buscador del TPV
         window.handlePOSSearchInput = function(inputElement) {
             if (!inputElement) return;
             const value = inputElement.value;
@@ -1005,15 +1040,12 @@
             window.appState.pos.productSearch = value; 
             renderApp(inputId, cursorPosition); 
         }
-        // --- [FIN] MODIFICACIÓN DE BUSCADORES ---
 
         window.changePOSView = function(viewName) {
-            // --- CAMBIO: No permitir ir a productos si no hay sesión ---
             if (viewName === 'products' && !window.appState.pos.activeSessionId) {
                 showToast('Primero debe iniciar una nueva sesión de venta.', 'warning');
                 return;
             }
-            // --- FIN CAMBIO ---
             window.appState.pos.currentPOSView = viewName;
             if (viewName === 'products') window.appState.pos.productSearch = '';
             renderApp();
@@ -1021,7 +1053,6 @@
 
         // --- LÓGICA DEL GESTOR DE VENTAS (POS) ---
 
-        // --- INICIO: NUEVAS FUNCIONES DE SESIÓN DE VENTA ---
         window.openStartSessionModal = function() {
             const openSession = window.appState.pos.salesSessions.find(s => s.status === 'open');
             if (openSession) {
@@ -1044,7 +1075,11 @@
                 return;
             }
 
-            const newId = generateId();
+            // --- [INICIO] CAMBIO SOLICITADO: Nuevo formato de ID de Sesión ---
+            const randomChars = Math.random().toString(36).substring(2, 7); // 5 chars
+            const newId = `revolution${randomChars}`;
+            // --- [FIN] CAMBIO SOLICITADO ---
+            
             const newSession = { 
                 id: newId, 
                 name: sessionName, 
@@ -1093,17 +1128,19 @@
             showToast(`Sesión "${activeSession.name}" cerrada.`, 'success');
         }
 
-        // --- [INICIO] NUEVA FUNCIÓN PARA MODAL DE DETALLE DE SESIÓN ---
         window.openSessionDetailsModal = function(sessionId) {
             const session = window.appState.pos.salesSessions.find(s => s.id === sessionId);
             if (!session) {
                 return showToast('Error: No se pudo encontrar la sesión.', 'error');
             }
 
-            // Popular título
+            // --- [INICIO] CAMBIO SOLICITADO: Obtener lista de productos ---
+            // Necesitamos acceso a todos los productos para buscar sus fotos
+            const allProducts = window.appState.pos.allProducts;
+            // --- [FIN] CAMBIO SOLICITADO ---
+
             document.getElementById('session-details-title').textContent = session.name;
 
-            // Popular resumen
             const totalSales = session.transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
             const numTransactions = session.transactions.length;
             document.getElementById('session-details-summary').innerHTML = `
@@ -1111,22 +1148,43 @@
                 <div class="flex justify-between font-medium"><span class="text-gray-600">N° de Transacciones:</span><span class="text-gray-800 text-lg font-bold">${numTransactions}</span></div>
             `;
 
-            // Popular lista de transacciones
             const listElement = document.getElementById('session-details-list');
             if (session.transactions.length === 0) {
                 listElement.innerHTML = `<li class="p-4 text-center text-gray-500">No hay transacciones en esta sesión.</li>`;
             } else {
                 const transactionsHTML = session.transactions
                     .slice()
-                    .sort((a, b) => b.timestamp - a.timestamp) // Ordenar de más reciente a más antigua
+                    .sort((a, b) => b.timestamp - a.timestamp) 
                     .map(t => {
                         const time = new Date(t.timestamp).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-                        const itemsList = t.items.map(i => `<span class="text-xs text-gray-600 block">${i.quantity}x ${i.name}</span>`).join('');
+                        
+                        // --- [INICIO] CAMBIO SOLICITADO: Generar lista de items con fotos ---
+                        // Reemplazamos el .map simple por uno que busca la foto
+                        const itemsList = t.items.map(i => {
+                            // Encontrar la información completa del producto
+                            const productInfo = allProducts.find(p => p.id === i.id);
+                            const photoUrl = productInfo ? productInfo.photoUrl : null;
+                            
+                            // Crear el HTML para la foto (pequeña, 8x8)
+                            const photoHTML = photoUrl 
+                                ? `<img src="${photoUrl}" alt="${i.name}" class="w-8 h-8 object-contain rounded-md bg-gray-100 mr-2 flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/40x40/cccccc/555555?text=IMG'"/>`
+                                : `<div class="w-8 h-8 bg-gray-200 flex items-center justify-center text-[8px] text-gray-500 rounded-md mr-2 flex-shrink-0">N/A</div>`;
+
+                            // Devolver el HTML con la foto y el texto
+                            return `<div class="flex items-center text-xs text-gray-600 mb-1">
+                                        ${photoHTML}
+                                        <span class="truncate">${i.quantity}x ${i.name}</span>
+                                    </div>`;
+                        }).join('');
+                        // --- [FIN] CAMBIO SOLICITADO ---
+                        
+                        const displayId = t.sequenceNumber ? String(t.sequenceNumber).padStart(2, '0') : t.id.substring(0, 6) + '...';
+
                         return `
                             <li class="p-3 bg-white rounded-lg shadow-sm border border-gray-200">
                                 <div class="flex justify-between items-start">
                                     <div>
-                                        <p class="text-sm font-semibold text-primary-600">Venta #${t.id.substring(0, 6)}...</p>
+                                        <p class="text-sm font-semibold text-primary-600">Venta #${displayId}</p>
                                         <p class="text-xs text-gray-400">${time}</p>
                                     </div>
                                     <span class="text-lg font-bold text-green-600">$${t.total}</span>
@@ -1140,29 +1198,199 @@
                 listElement.innerHTML = transactionsHTML;
             }
 
-            // Abrir modal
             document.getElementById('session-details-modal').classList.remove('hidden');
             document.getElementById('session-details-modal').classList.add('flex');
         }
-        // --- [FIN] NUEVA FUNCIÓN ---
 
-        // --- [INICIO] CAMBIO: IVA al 0% ---
+        window.openTransactionDetailsModal = function(transactionId) {
+            const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
+            if (!activeSession) {
+                return showToast('Error: No se encontró la sesión activa.', 'error');
+            }
+            
+            const transaction = activeSession.transactions.find(t => t.id === transactionId);
+            if (!transaction) {
+                return showToast('Error: No se pudo encontrar la transacción.', 'error');
+            }
+
+            const allProducts = window.appState.pos.allProducts;
+
+            const displayId = transaction.sequenceNumber ? String(transaction.sequenceNumber).padStart(2, '0') : transaction.id.substring(0, 6);
+            document.getElementById('transaction-details-title').textContent = displayId;
+
+            const time = new Date(transaction.timestamp).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' });
+            document.getElementById('transaction-details-summary').innerHTML = `
+                <div class="flex justify-between font-bold"><span class="text-gray-600">Total Venta:</span><span class="text-green-600 text-xl">$${transaction.total}</span></div>
+                <div class="flex justify-between text-sm"><span class="text-gray-600">Subtotal:</span><span class="text-gray-800">$${transaction.subtotal}</span></div>
+                <div class="flex justify-between text-sm"><span class="text-gray-600">IVA (0%):</span><span class="text-gray-800">$${transaction.tax}</span></div>
+                <div class="flex justify-between text-sm mt-2 pt-2 border-t"><span class="text-gray-600">Fecha:</span><span class="text-gray-800">${time}</span></div>
+            `;
+
+            const listElement = document.getElementById('transaction-details-list');
+            const itemsHTML = transaction.items.map(item => {
+                const productInfo = allProducts.find(p => p.id === item.id);
+                const photoUrl = productInfo ? productInfo.photoUrl : null;
+                const photoHTML = photoUrl 
+                    ? `<img src="${photoUrl}" alt="${item.name}" class="w-16 h-16 object-contain rounded-md bg-gray-100" onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/555555?text=IMG'"/>`
+                    : `<div class="w-16 h-16 bg-gray-200 flex items-center justify-center text-xs text-gray-500 rounded-md">SIN FOTO</div>`;
+
+                return `
+                    <li class="p-3 bg-white rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                        ${photoHTML}
+                        <div class="flex-1">
+                            <p class="font-semibold text-gray-800">${item.name}</p>
+                            <p class="text-sm text-gray-500">${item.quantity} unidades x $${item.price.toFixed(2)} c/u</p>
+                        </div>
+                        <span class="text-lg font-bold text-gray-800">$${(item.quantity * item.price).toFixed(2)}</span>
+                    </li>
+                `;
+            }).join('');
+            
+            listElement.innerHTML = itemsHTML.length > 0 ? itemsHTML : '<li>Error al cargar productos.</li>';
+
+            document.getElementById('transaction-details-modal').classList.remove('hidden');
+            document.getElementById('transaction-details-modal').classList.add('flex');
+        }
+
+        // --- [INICIO] NUEVA FUNCIÓN PARA DESCARGAR PDF ---
+        window.downloadSessionPDF = function(event, sessionId) {
+            // Prevenir que se abra el modal de detalles
+            event.stopPropagation();
+
+            const session = window.appState.pos.salesSessions.find(s => s.id === sessionId);
+            if (!session) {
+                return showToast('Error: Sesión no encontrada.', 'error');
+            }
+            
+            const transactions = session.transactions;
+            if (transactions.length === 0) {
+                return showToast('Esta sesión no tiene ventas para descargar.', 'info');
+            }
+
+            try {
+                // Inicializar jsPDF
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                // Definir márgenes y posición Y inicial
+                let yPos = 20;
+                const margin = 15;
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const usableWidth = pageWidth - (margin * 2);
+
+                // Función auxiliar para añadir página si es necesario
+                const checkAddPage = (heightNeeded) => {
+                    if (yPos + heightNeeded > doc.internal.pageSize.getHeight() - margin) {
+                        doc.addPage();
+                        yPos = margin;
+                    }
+                };
+
+                // --- TÍTULO DEL DOCUMENTO ---
+                doc.setFontSize(18);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Reporte de Ventas de Sesión', pageWidth / 2, yPos, { align: 'center' });
+                yPos += 12;
+
+                // --- RESUMEN DE LA SESIÓN ---
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.text(session.name, margin, yPos);
+                yPos += 7;
+
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                const sessionDate = new Date(session.timestamp).toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' });
+                doc.text(sessionDate, margin, yPos);
+                yPos += 7;
+
+                const totalSales = session.transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
+                doc.setFont('helvetica', 'bold');
+                doc.text(`Total de Ventas: $${totalSales}`, margin, yPos);
+                doc.text(`Total de Transacciones: ${transactions.length}`, margin + 80, yPos);
+                yPos += 12; // Espacio antes de las transacciones
+
+                // --- LISTA DE TRANSACCIONES ---
+                transactions.forEach((t, index) => {
+                    checkAddPage(30); // Espacio mínimo para el encabezado de la transacción
+                    
+                    // Línea separadora
+                    doc.setDrawColor(180); // Gris claro
+                    doc.line(margin, yPos, pageWidth - margin, yPos);
+                    yPos += 8;
+
+                    // Encabezado de la transacción
+                    const displayId = String(t.sequenceNumber).padStart(2, '0');
+                    const time = new Date(t.timestamp).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+                    doc.setFontSize(12);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(`Venta #${displayId}  (${time})`, margin, yPos);
+                    
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(`Total Venta: $${t.total}`, usableWidth + margin, yPos, { align: 'right' });
+                    yPos += 8;
+
+                    // "Tabla" de productos
+                    doc.setFontSize(9);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('Cant.', margin, yPos);
+                    doc.text('Producto', margin + 15, yPos);
+                    doc.text('Precio U.', usableWidth - 15, yPos, { align: 'right' });
+                    doc.text('Subtotal', usableWidth + margin, yPos, { align: 'right' });
+                    yPos += 5;
+
+                    doc.setFont('helvetica', 'normal');
+                    
+                    // Items de la transacción
+                    t.items.forEach(item => {
+                        checkAddPage(6); // 6mm por línea de producto
+                        
+                        // `doc.text` con maxWidth maneja el salto de línea automático para nombres largos
+                        const itemText = item.name;
+                        const splitName = doc.splitTextToSize(itemText, usableWidth - 60);
+                        
+                        const itemPrice = `$${item.price.toFixed(2)}`;
+                        const itemSubtotal = `$${(item.quantity * item.price).toFixed(2)}`;
+
+                        doc.text(String(item.quantity), margin, yPos);
+                        doc.text(splitName, margin + 15, yPos);
+                        doc.text(itemPrice, usableWidth - 15, yPos, { align: 'right' });
+                        doc.text(itemSubtotal, usableWidth + margin, yPos, { align: 'right' });
+
+                        yPos += (splitName.length * 4) + 2; // Ajustar Y basado en cuántas líneas ocupó el nombre
+                    });
+
+                    yPos += 5; // Espacio extra después de cada transacción
+                });
+
+                // --- GUARDAR EL PDF ---
+                // Reemplazar espacios en el nombre para un archivo válido
+                const fileName = `Reporte_Sesion_${session.name.replace(/ /g, '_')}.pdf`;
+                doc.save(fileName);
+
+                showToast('Descargando reporte PDF...', 'success');
+
+            } catch (error) {
+                console.error("Error al generar el PDF:", error);
+                showToast('Error al generar el PDF.', 'error');
+            }
+        }
+        // --- [FIN] NUEVA FUNCIÓN PARA DESCARGAR PDF ---
+
+
         function calculatePOSTotals() {
             const cartItems = Object.values(window.appState.pos.cart);
             const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const tax = 0; // Se establece el IVA en 0
+            const tax = 0; 
             const total = subtotal + tax;
             return { subtotal: subtotal.toFixed(2), tax: tax.toFixed(2), total: total.toFixed(2) };
         }
-        // --- [FIN] CAMBIO ---
 
         window.addProductToCart = function(product, quantity = 1) {
-            // --- CAMBIO: Verificar sesión activa ---
             if (!window.appState.pos.activeSessionId) {
                 showToast('No hay sesión de venta activa. Inicie una nueva.', 'error');
                 return;
             }
-            // --- FIN CAMBIO ---
 
             const productId = product.id, cart = window.appState.pos.cart;
             const currentProduct = window.appState.pos.allProducts.find(p => p.id === productId && p.inventoryId === product.inventoryId);
@@ -1188,20 +1416,32 @@
             renderApp();
         }
         window.processSale = function() {
-            // --- CAMBIO: Verificar y obtener sesión activa ---
             const activeSession = window.appState.pos.salesSessions.find(s => s.id === window.appState.pos.activeSessionId);
             if (!activeSession) {
                 showToast('Error: No hay sesión de venta activa.', 'error');
                 return;
             }
-            // --- FIN CAMBIO ---
 
             const cartItems = Object.values(window.appState.pos.cart);
             if (cartItems.length === 0) return showToast('El carrito está vacío.', 'error');
             if (!window.confirm || !window.confirm(`¿Confirmar venta por $${calculatePOSTotals().total}?`)) return;
             
             const totals = calculatePOSTotals();
-            const transaction = { id: generateId(), timestamp: new Date().getTime(), total: totals.total, subtotal: totals.subtotal, tax: totals.tax, items: cartItems.map(item => ({ ...item })) };
+            
+            // --- [INICIO] CAMBIO SOLICITADO: ID secuencial global ---
+            window.appState.globalSalesCounter += 1; // Incrementar el contador global
+            const sequenceNumber = window.appState.globalSalesCounter; // Asignar el nuevo número
+            // --- [FIN] CAMBIO SOLICITADO ---
+
+            const transaction = { 
+                id: generateId(), 
+                sequenceNumber: sequenceNumber, // ID secuencial global
+                timestamp: new Date().getTime(), 
+                total: totals.total, 
+                subtotal: totals.subtotal, 
+                tax: totals.tax, 
+                items: cartItems.map(item => ({ ...item })) 
+            };
             
             cartItems.forEach(cartItem => {
                 const invId = cartItem.inventoryId, products = window.appState.products[invId];
@@ -1214,24 +1454,104 @@
                 }
             });
 
-            // --- CAMBIO: Guardar transacción en la sesión activa ---
             activeSession.transactions.push(transaction); 
-            // --- FIN CAMBIO ---
             
             window.appState.pos.cart = {};
-            saveData(); 
+            saveData(); // <--- Esto guardará el nuevo globalSalesCounter
             updateAllProductsForPOS();
+            
             showToast(`Venta de $${totals.total} completada.`, 'success');
             
-            // Ir al dashboard para ver el resumen actualizado
-            window.appState.pos.currentPOSView = 'dashboard'; 
-            renderApp();
+            openTicketPrompt(transaction); 
         }
         window.clearCart = function() {
              if (Object.keys(window.appState.pos.cart).length === 0) return;
              if (!window.confirm || !window.confirm(`¿Vaciar el carrito?`)) return;
             window.appState.pos.cart = {}; showToast('Carrito vaciado.', 'info'); renderApp();
         }
+
+        // --- FUNCIONES PARA TICKET WHATSAPP ---
+
+        function openTicketPrompt(transaction) {
+            window.appState.pos.lastCompletedTransaction = transaction;
+            
+            const ticketStep = document.getElementById('ticket-prompt-step');
+            const whatsappStep = document.getElementById('whatsapp-prompt-step');
+            const whatsappForm = document.getElementById('whatsapp-form');
+            
+            if (ticketStep) ticketStep.classList.remove('hidden');
+            if (whatsappStep) whatsappStep.classList.add('hidden');
+            if (whatsappForm) whatsappForm.reset();
+
+            const modal = document.getElementById('ticket-whatsapp-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        window.handleTicketResponse = function(needsTicket) {
+            if (needsTicket) {
+                document.getElementById('ticket-prompt-step').classList.add('hidden');
+                document.getElementById('whatsapp-prompt-step').classList.remove('hidden');
+            } else {
+                closeModal(null, 'ticket-whatsapp-modal');
+                window.appState.pos.lastCompletedTransaction = null; 
+                
+                window.appState.pos.currentPOSView = 'dashboard'; 
+                renderApp();
+            }
+        }
+
+        window.handleWhatsAppSubmit = function(event) {
+            event.preventDefault();
+            const numberInput = document.getElementById('whatsapp-number');
+            const lada = "521"; 
+            const phoneNumber = numberInput.value.trim();
+            
+            if (!phoneNumber || !/^[0-9]{10}$/.test(phoneNumber)) {
+                showToast('Por favor, ingrese un número de 10 dígitos válido.', 'error');
+                return;
+            }
+
+            const transaction = window.appState.pos.lastCompletedTransaction;
+            if (!transaction) {
+                showToast('Error: No se encontraron detalles de la venta.', 'error');
+                closeModal(null, 'ticket-whatsapp-modal');
+                renderApp();
+                return;
+            }
+
+            const displayId = String(transaction.sequenceNumber).padStart(2, '0');
+            let ticketText = "¡Gracias por su compra! 🛍️\n\n";
+            ticketText += `*Resumen de Venta*\n`;
+            ticketText += `ID Venta: #${displayId}\n`; 
+            ticketText += `Fecha: ${new Date(transaction.timestamp).toLocaleString('es-ES')}\n\n`;
+            ticketText += "*Productos:*\n";
+            
+            transaction.items.forEach(item => {
+                ticketText += `- ${item.quantity}x ${item.name} ($${(item.price * item.quantity).toFixed(2)})\n`;
+            });
+            
+            ticketText += "\n";
+            ticketText += `*Subtotal:* $${transaction.subtotal}\n`;
+            ticketText += `*IVA (0%):* $${transaction.tax}\n`;
+            ticketText += `*TOTAL:* $${transaction.total}\n\n`;
+            ticketText += "-----------------------------\n";
+            ticketText += "Generado por Inventario Pro";
+
+            const encodedText = encodeURIComponent(ticketText);
+            const fullNumber = lada + phoneNumber;
+            
+            const waUrl = `https://wa.me/${fullNumber}?text=${encodedText}`;
+            window.open(waUrl, '_blank');
+
+            showToast('Enviando a WhatsApp...', 'success');
+            closeModal(null, 'ticket-whatsapp-modal');
+            window.appState.pos.lastCompletedTransaction = null; 
+
+            window.appState.pos.currentPOSView = 'dashboard'; 
+            renderApp();
+        }
+
 
         // --- RENDERING VIEWS ---
         const loginPageHTML = `<div id="login-page" class="flex items-center justify-center min-h-screen p-4 bg-gray-50"><div class="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl"><h1 class="text-3xl font-bold text-gray-800 text-center mb-6">Inventario Pro</h1><h2 class="text-xl text-center text-gray-600 mb-8">Iniciar Sesión</h2><form onsubmit="simulateLogin(event)"><div class="mb-5"><label for="login-username" class="block text-sm font-medium text-gray-700 mb-1">Usuario</label><input type="text" id="login-username" required class="input-style"></div><div class="mb-6"><label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label><input type="password" id="login-password" required class="input-style"></div><p id="login-error" class="text-red-500 text-sm mb-4"></p><button type="submit" class="btn-primary w-full mb-4">Iniciar sesión</button></form><div class="text-center text-sm space-y-2"><a href="#" class="text-primary-500 hover:text-primary-600 transition">Crear cuenta</a><span class="text-gray-400"> | </span><a href="#" class="text-primary-500 hover:text-primary-600 transition">¿Olvidaste tu contraseña?</a></div></div></div>`;
@@ -1263,7 +1583,6 @@
                 return `<div class="table-row-container bg-white hover:bg-gray-50 border-b border-gray-200 text-sm md:text-base p-4 md:p-0 items-center"><div class="p-0 md:p-4 hidden md:flex items-center justify-center min-w-[200px]">${item.photoUrl ? `<img src="${item.photoUrl}" alt="${item.name}" class="product-image" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/555555?text=IMG'"/>` : `<div class="image-placeholder">SIN FOTO</div>`}</div><div class="hidden md:flex md:p-4 text-gray-500 truncate justify-center flex-col space-y-1 items-center" title="${item.id}"><span class="text-xs font-semibold">ID: ${item.id.substring(0, 8)}...</span>${item.barcode ? `<span class="text-xs text-gray-400">Cód: ${item.barcode}</span>` : `<span class="text-xs text-gray-400">Sin Código</span>`}</div><div class="p-0 md:p-4 font-extrabold text-lg text-gray-800 flex flex-col space-y-1 justify-center"><div class="flex items-center space-x-2"><span class="md:hidden">${item.photoUrl ? `<img src="${item.photoUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md inline mr-2 shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/555555?text=IMG'" />` : `<span class="bg-gray-200 w-16 h-16 flex items-center justify-center text-xs rounded-md inline mr-2 shadow-sm">N/A</span>`}</span><span class="truncate">${item.name}</span></div><div class="mt-1 mb-2"><span class="text-primary-600 text-lg md:text-2xl font-black whitespace-nowrap">$${item.price}</span><span class="text-gray-500 text-xs ml-1 font-semibold"> (Venta)</span></div><div class="flex flex-col space-y-0 text-sm font-medium text-green-700 mt-1 md:mt-0 border-t pt-1 border-gray-100"><span id="inv-total-${item.id}" class="text-xs md:text-sm">Inversión Total: $<span class="font-bold">${totalInvestment}</span></span><span id="vent-total-${item.id}" class="text-xs md:text-sm">Venta Potencial: $<span class="font-bold">${totalSalesPotential}</span></span><span id="gan-total-${item.id}" class="text-xs md:text-sm">Ganancia Potencial: $<span class="font-bold">${totalProfitPotential}</span></span></div></div><div class="p-0 md:flex md:p-4 text-gray-600 justify-center items-center hidden">${item.category}</div><div class="p-0 md:flex md:p-4 flex-col space-y-1 justify-center items-center hidden"><span class="text-gray-500 font-medium text-sm md:text-base whitespace-nowrap">Costo: $${item.masterPrice}</span><span class="font-bold text-xs ${priceColor} whitespace-nowrap">Ganancia/U: $${profitText}</span></div><div class="p-0 md:flex md:p-4 text-gray-600 justify-center items-center hidden"><span id="stock-badge-${item.id}" class="py-1 px-3 inline-flex text-xs leading-5 font-semibold rounded-full ${stockClasses}">Stock: ${stockNum}</span></div><div class="p-0 md:flex md:p-4 flex space-x-3 pt-2 md:pt-0 pb-2 md:pb-0 justify-end items-center"><button onclick="openEditProductModal('${item.id}')" class="text-indigo-600 hover:text-indigo-900 transition text-xl" title="Editar">✏️</button><button onclick="openStockWarningModal('${item.id}', '${item.name}')" class="text-green-600 hover:text-green-900 transition text-xl" title="Añadir Stock">📦</button><button onclick="deleteItem('${item.id}', '${item.name}')" class="text-red-600 hover:text-red-900 transition text-xl" title="Eliminar">🗑️</button></div><div class="md:hidden flex flex-wrap justify-between items-center text-xs p-2 bg-gray-50 border-t"><span class="text-gray-600">Cat: ${item.category}</span><span class="text-green-600 font-medium">Venta/U: $${item.price}</span><span class="font-bold ${priceColor}">Ganancia/U: $${profitText}</span><span id="stock-badge-mobile-${item.id}" class="py-1 px-3 text-xs font-semibold rounded-full ${stockClasses}">Stock: ${stockNum}</span></div></div>`;
             }).join('');
             
-            // --- CAMBIO DE FUNCIÓN E ID ---
             return `<div class="flex justify-between items-center mb-6"><h2 class="text-3xl font-semibold text-gray-800">Productos</h2><button onclick="openAddProductModal()" class="btn-primary flex items-center space-x-1 py-2 px-3"><span>➕</span><span class="hidden sm:inline">Agregar Producto</span></button></div><div class="mb-8"><label for="inventory-search-input" class="block text-sm font-medium text-gray-700 mb-1">Buscar por nombre o código...</label><div><input type="text" id="inventory-search-input" oninput="handleInventorySearchInput(this)" placeholder="Escriba para buscar..." class="input-style shadow-lg w-full" value="${window.appState.searchFilter}"></div></div>
             <div class="bg-white shadow-lg rounded-xl overflow-x-auto border border-gray-100"><div class="min-w-full inline-block align-middle"><div class="table-row-header bg-gray-50 font-bold text-gray-600 uppercase text-xs tracking-wider border-b p-4"><div class="flex items-center justify-center">Foto</div><div class="flex items-center justify-center">ID / Código</div><div class="flex items-center">Nombre / Precio Venta / Totales</div><div class="flex items-center justify-center">Categoría</div><div class="flex items-center justify-center">Costo / Ganancia (U)</div><div class="flex items-center justify-center">Stock</div><div class="flex items-center justify-end">Acciones</div></div><div id="inventory-table-body" class="divide-y divide-gray-200">${tableBody.length > 0 ? tableBody : '<div class="p-6 text-center text-gray-500">No hay productos.</div>'}</div></div></div><p class="text-sm text-gray-500 mt-4">Total de Productos: ${products.length}</p>`;
         }
@@ -1280,7 +1599,6 @@
             return `<h2 class="text-3xl font-semibold text-gray-800 mb-6">Historial de Movimientos</h2><ul class="space-y-4">${historyList.length > 0 ? historyList : '<li class="p-6 text-center text-gray-500 bg-white rounded-xl shadow-lg">No hay movimientos.</li>'}</ul>`;
         }
         
-        // --- [INICIO] FUNCIÓN renderPOSView() ACTUALIZADA ---
         function renderPOSView() {
             const allProducts = window.appState.pos.allProducts, cartItems = Object.values(window.appState.pos.cart);
             const totals = calculatePOSTotals(), posView = window.appState.pos.currentPOSView;
@@ -1309,7 +1627,20 @@
                     const transactions = activeSession.transactions.slice().sort((a, b) => b.timestamp - a.timestamp);
                     totalSales = transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
                     salesCount = transactions.length;
-                    salesListHTML = transactions.map(t => `<tr><td class="px-6 py-4 text-sm text-gray-500">${new Date(t.timestamp).toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'})}</td><td class="px-6 py-4 text-sm font-medium text-gray-900 truncate max-w-xs" title="${t.items.map(i => `${i.quantity}x ${i.name}`).join(', ')}">${t.items.map(i => `${i.quantity}x ${i.name}`).join(', ')}</td><td class="px-6 py-4 text-sm font-bold text-right text-green-600">$${t.total}</td></tr>`).join('');
+                    
+                    salesListHTML = transactions.map(t => {
+                        const displayId = String(t.sequenceNumber).padStart(2, '0');
+                        const time = new Date(t.timestamp).toLocaleTimeString('es-ES', {hour: '2-digit', minute:'2-digit'});
+                        const productSummary = t.items.map(i => `${i.quantity}x ${i.name}`).join(', ');
+                        
+                        return `<tr class="cursor-pointer hover:bg-gray-50" onclick="openTransactionDetailsModal('${t.id}')">
+                                    <td class="px-6 py-4 text-sm font-bold text-primary-500">#${displayId}</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">${time}</td>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 truncate max-w-xs" title="${productSummary}">${productSummary}</td>
+                                    <td class="px-6 py-4 text-sm font-bold text-right text-green-600">$${t.total}</td>
+                                </tr>`;
+                    }).join('');
+
                     sessionControls = `<div class="flex flex-col md:flex-row gap-4 mb-8"><button onclick="changePOSView('products')" class="btn-primary w-full md:w-auto text-lg flex items-center justify-center space-x-2"><span>➕</span> <span>Nueva Venta</span></button><button onclick="openCloseSessionModal()" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 transition w-full md:w-auto text-lg flex items-center justify-center space-x-2"><span>🔒</span> <span>Cerrar Venta</span></button></div>`;
                 } else {
                     sessionTitle = "Dashboard TPV";
@@ -1319,39 +1650,56 @@
                     sessionControls = `<div class="mb-8"><button onclick="openStartSessionModal()" class="bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-green-600 transition w-full text-lg flex items-center justify-center space-x-2"><span>▶️</span> <span>Iniciar Nueva Sesión de Venta</span></button><p class="text-center text-sm text-gray-500 mt-2">Debe iniciar una sesión para registrar ventas.</p></div>`;
                 }
 
-                return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">${sessionTitle}</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500"><p class="text-sm text-gray-500 font-medium">Ventas de la Sesión</p><p class="text-3xl font-black text-gray-800 mt-1">$${totalSales}</p><p class="text-xs text-gray-400 mt-2">${salesCount} transacciones</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-500"><p class="text-sm text-gray-500 font-medium">Stock Total</p><p class="text-3xl font-black text-gray-800 mt-1">${totalStock}</p><p class="text-xs text-gray-400 mt-2">Unidades totales</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500"><p class="text-sm text-gray-500 font-medium">Bajo Inventario</p><p class="text-3xl font-black ${lowStockCount > 0 ? 'text-red-500' : 'text-gray-800'} mt-1">${lowStockCount}</p><p class="text-xs text-gray-400 mt-2">Productos $\le 10$ unidades</p></div></div>${sessionControls}<h3 class="text-xl font-semibold text-gray-800 mb-4">Ventas de la Sesión Actual (${salesCount})</h3><div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">${salesCount > 0 ? `<table class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hora</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Productos</th><th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total</th></tr></thead><tbody class="bg-white divide-y divide-gray-200">${salesListHTML}</tbody></table>` : salesListHTML}</div></div></div>`;
+                const tableHeaderHTML = `
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"># Venta</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hora</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Productos</th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total</th>
+                        </tr>
+                    </thead>`;
+
+                return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">${sessionTitle}</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500"><p class="text-sm text-gray-500 font-medium">Ventas de la Sesión</p><p class="text-3xl font-black text-gray-800 mt-1">$${totalSales}</p><p class="text-xs text-gray-400 mt-2">${salesCount} transacciones</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-500"><p class="text-sm text-gray-500 font-medium">Stock Total</p><p class="text-3xl font-black text-gray-800 mt-1">${totalStock}</p><p class="text-xs text-gray-400 mt-2">Unidades totales</p></div><div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500"><p class="text-sm text-gray-500 font-medium">Bajo Inventario</p><p class="text-3xl font-black ${lowStockCount > 0 ? 'text-red-500' : 'text-gray-800'} mt-1">${lowStockCount}</p><p class="text-xs text-gray-400 mt-2">Productos $\le 10$ unidades</p></div></div>${sessionControls}<h3 class="text-xl font-semibold text-gray-800 mb-4">Ventas de la Sesión Actual (${salesCount})</h3><div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">${salesCount > 0 ? `<table class="min-w-full divide-y divide-gray-200">${tableHeaderHTML}<tbody class="bg-white divide-y divide-gray-200">${salesListHTML}</tbody></table>` : salesListHTML}</div></div></div>`;
             }
 
-            // --- [INICIO] CAMBIO: renderProductGallery modificado ---
-            // Ahora solo renderiza la cuadrícula de productos, no el buscador
             const renderProductGallery = () => {
                 const productGrid = filteredProducts.map(p => { const invName = (window.appState.inventories.find(i => i.id === p.inventoryId)?.name.substring(0, 5) || 'N/A'); return `<div onclick="addProductToCart(${JSON.stringify(p).replace(/'/g, '&#39;').replace(/"/g, '&#34;')}, 1)" class="pos-product-card bg-white h-full relative"><span class="absolute top-2 right-2 text-xs text-gray-400">Inv: ${invName}</span><div class="w-full h-24 sm:h-32 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden mb-2">${p.photoUrl ? `<img src="${p.photoUrl}" alt="${p.name}" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x200/cccccc/555555?text=IMG'"/>` : `<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>`}</div><div class="flex flex-col flex-1 mt-1"><p class="text-sm font-medium text-gray-800 truncate" title="${p.name}">${p.name}</p><div class="mt-1 flex justify-between items-end"><span class="text-xl font-bold text-primary-500">$${p.price}</span><span class="text-xs font-semibold ${p.stock <= 10 ? 'text-red-500' : 'text-gray-500'}">Stock: ${p.stock}</span></div></div></div>`; }).join('');
                 
-                // Devuelve solo la cuadrícula
                 return `<div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">${productGrid.length > 0 ? productGrid : '<div class="col-span-full p-8 text-center text-gray-500 bg-gray-100 rounded-xl">No se encontraron productos.</div>'}</div></div>`;
             };
-            // --- [FIN] CAMBIO ---
 
+            // --- [INICIO] FUNCIÓN MODIFICADA CON BOTÓN PDF ---
             const renderPOSTransactions = () => {
                 const closedSessions = window.appState.pos.salesSessions.filter(s => s.status === 'closed').sort((a, b) => b.timestamp - a.timestamp);
                 const salesList = closedSessions.map(s => { 
                     const date = new Date(s.timestamp).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short' }); 
                     const total = s.transactions.reduce((sum, t) => sum + parseFloat(t.total), 0).toFixed(2);
-                    return `<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-lg hover:border-primary-500 transition duration-150" onclick="openSessionDetailsModal('${s.id}')">
-                                <div class="flex justify-between items-start border-b pb-2 mb-2">
-                                    <span class="text-xl font-bold text-gray-800">${s.name}</span>
-                                    <span class="text-xs text-gray-400">${date}</span>
+                    
+                    return `<div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                                <div class="cursor-pointer hover:bg-gray-50 p-2 rounded-t-lg" onclick="openSessionDetailsModal('${s.id}')">
+                                    <div class="flex justify-between items-start border-b pb-2 mb-2">
+                                        <span class="text-xl font-bold text-gray-800">${s.name}</span>
+                                        <span class="text-xs text-gray-400">${date}</span>
+                                    </div>
+                                    <p class="text-lg font-bold text-green-600">Total: $${total}</p>
+                                    <p class="text-sm text-gray-600">Transacciones: ${s.transactions.length}</p>
+                                    <p class="text-xs text-gray-500 mt-1">ID Sesión: ${s.id}</p>
                                 </div>
-                                <p class="text-lg font-bold text-green-600">Total: $${total}</p>
-                                <p class="text-sm text-gray-600">Transacciones: ${s.transactions.length}</p>
-                                <p class="text-xs text-gray-500 mt-1">ID Sesión: ${s.id.substring(0, 8)}...</p>
+                                <div class="mt-2 pt-2 border-t border-gray-100">
+                                    <button onclick="downloadSessionPDF(event, '${s.id}')" class="w-full bg-blue-500 text-white text-sm font-semibold py-2 px-3 rounded-lg hover:bg-blue-600 transition duration-150 flex items-center justify-center space-x-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                        </svg>
+                                        <span>Descargar PDF</span>
+                                    </button>
+                                </div>
                             </div>`; 
                 }).join('');
                 return `<div class="pos-main-content-wrapper"><div class="pos-scroll-area p-4 lg:p-6 pos-scrollbar pb-20 lg:pb-6"><h2 class="text-2xl font-bold text-gray-800 mb-6">Historial de Ventas (Sesiones Cerradas)</h2><div class="space-y-4">${salesList.length > 0 ? salesList : '<div class="p-8 text-center text-gray-500 bg-white rounded-xl shadow-lg">No hay sesiones de venta cerradas.</div>'}</div></div></div>`;
             }
+            // --- [FIN] FUNCIÓN MODIFICADA CON BOTÓN PDF ---
 
-            // --- [INICIO] CAMBIO: Se ensambla el mainContent con el buscador ---
-            // Define el HTML del buscador una vez
             const posSearchbarHTML = (id) => `
                 <div class="flex-shrink-0 p-4 bg-white border-b border-gray-200">
                     <div class="text-lg font-bold text-gray-800 mb-3">Galería de Productos</div>
@@ -1364,11 +1712,9 @@
                     </div>
                 </div>`;
             
-            // Asigna el contenido principal según la vista
             if (posView === 'dashboard') {
                 mainContent = renderPOSDashboard();
             } else if (posView === 'products') {
-                // Combina el buscador (con ID única) + la cuadrícula de productos
                 mainContent = `
                     <div class="pos-main-content-wrapper">
                         ${posSearchbarHTML('pos-search-input-desktop')} 
@@ -1379,17 +1725,13 @@
             } else {
                 mainContent = renderPOSDashboard();
             }
-            // --- [FIN] CAMBIO ---
 
             const cartSection = `<div class="bg-gray-100 border-l border-gray-200 flex flex-col"><div class="flex-shrink-0 bg-white p-4 border-b"><h3 class="text-2xl font-bold text-gray-800">Carrito</h3></div><div class="p-4 space-y-3">${cartItems.length > 0 ? cartItems.map(item => `<div class="bg-white p-3 rounded-lg shadow-sm flex items-center justify-between border-l-4 border-primary-500"><div class="flex-1 min-w-0 pr-2"><p class="font-semibold text-gray-800 truncate" title="${item.name}">${item.name}</p><p class="text-xs text-gray-500">$${item.price.toFixed(2)} c/u (Stock: ${item.maxStock})</p></div><div class="flex items-center space-x-2"><button onclick="updateCartQuantity('${item.id}', -1)" class="text-gray-600 hover:text-red-500 font-bold text-xl leading-none">-</button><span class="font-bold text-lg text-primary-600 w-6 text-center">${item.quantity}</span><button onclick="updateCartQuantity('${item.id}', 1)" class="text-gray-600 hover:text-green-500 font-bold text-xl leading-none">+</button></div></div>`).join('') : `<div class="text-center text-gray-500 p-8"><span class="block text-4xl mb-2">🛒</span><p>Añade productos para comenzar.</p></div>`}</div><div classpre="flex-shrink-0 bg-white p-4 shadow-2xl border-t border-gray-200 mt-auto"><div class="space-y-2 mb-4"><div class="flex justify-between text-sm text-gray-600"><span>Subtotal:</span><span>$${totals.subtotal}</span></div><div class="flex justify-between text-sm text-gray-600 border-b pb-2"><span>IVA (0%):</span><span>$${totals.tax}</span></div><div class="flex justify-between text-2xl font-black text-gray-800"><span>TOTAL:</span><span>$${totals.total}</span></div></div><button onclick="processSale()" ${cartItems.length === 0 || !hasActiveSession ? 'disabled' : ''} class="${cartItems.length === 0 || !hasActiveSession ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-600 hover:bg-green-700'} text-white font-extrabold py-3 rounded-xl w-full text-lg shadow-lg transition duration-200">Procesar Pago ($${totals.total})</button><button onclick="clearCart()" class="text-red-500 hover:text-red-600 text-sm mt-3 w-full">Vaciar Carrito</button></div></div>`;
             
-            // --- [INICIO] MODIFICACIÓN PARA ENSAMBLADO MÓVIL ---
-            // Se crea el contenido móvil por separado para insertar el buscador correcto
             let mobileMainContent;
             if (posView === 'dashboard') {
                 mobileMainContent = renderPOSDashboard();
             } else if (posView === 'products') {
-                // Combina el buscador (con ID MÓVIL) + la cuadrícula
                 mobileMainContent = `
                     <div class="pos-main-content-wrapper">
                         ${posSearchbarHTML('pos-search-input-mobile')} 
@@ -1421,19 +1763,14 @@
                 </div>
             </div>
             </div><footer class="bg-white border-t border-gray-100 text-xs text-gray-400 text-center p-2 flex-shrink-0">© 2025 TPV Pro.</footer></div>`;
-            // --- [FIN] MODIFICACIÓN ---
         }
-        // --- [FIN] FUNCIÓN renderPOSView() ACTUALIZADA ---
 
         // --- RENDERIZADO PRINCIPAL ---
         
-        // --- [INICIO] MODIFICACIÓN DE renderApp ---
         function renderApp(focusedInputId = null, cursorPosition = null) {
             let contentHTML = '';
             
-            // --- Lógica para guardar el estado del scroll (para TPV) ---
             let scrollTops = {};
-            // --- CAMBIO: Detectar ambos IDs del buscador TPV ---
             if (focusedInputId && (focusedInputId === 'pos-search-input-desktop' || focusedInputId === 'pos-search-input-mobile')) {
                  const posScrollArea = document.querySelector('.pos-scroll-area');
                  if (posScrollArea) {
@@ -1441,7 +1778,6 @@
                  }
             }
 
-            // --- Lógica de renderizado (SIN CAMBIOS) ---
             if (!window.appState.isLoggedIn) {
                 contentHTML = loginPageHTML;
             } else if (window.appState.currentView === 'pos_manager') {
@@ -1459,16 +1795,13 @@
                 contentHTML = renderDashboardView();
             }
             
-            // --- Renderizar ---
             appContainer.innerHTML = contentHTML;
 
-            // --- Lógica para restaurar el foco y el scroll ---
             if (focusedInputId) {
                 const focusedInput = document.getElementById(focusedInputId);
                 if (focusedInput) {
-                    focusedInput.focus(); // Devolver el foco
+                    focusedInput.focus(); 
                     try {
-                        // Restaurar la posición del cursor
                         focusedInput.setSelectionRange(cursorPosition, cursorPosition);
                     } catch (e) {
                         console.warn("No se pudo restaurar la posición del cursor:", e);
@@ -1476,20 +1809,18 @@
                 }
             }
 
-            // Restaurar scroll de TPV si existe
             if (scrollTops['pos-scroll-area']) {
                 const posScrollArea = document.querySelector('.pos-scroll-area');
                 if (posScrollArea) {
                     posScrollArea.scrollTop = scrollTops['pos-scroll-area'];
                 }
             }
-            // --- [FIN] MODIFICACIÓN DE renderApp ---
         }
 
         // --- INICIALIZACIÓN ---
         document.addEventListener('DOMContentLoaded', () => {
-            loadTheme(); // Cargar el tema primero
-            loadData(); // Cargar el resto de los datos
+            loadTheme(); 
+            loadData(); 
             
             if (window.appState.isLoggedIn && window.appState.inventories.length === 0) {
                  showToast('Sesión reanudada. Crea tu primer Inventario.', 'info');
@@ -1497,17 +1828,12 @@
                 setTimeout(() => showToast('Sesión reanudada.', 'info'), 100);
             }
 
-            // --- CAMBIO: Mover listeners a renderApp o delegar ---
-            // Los listeners se pierden al hacer innerHTML. 
-            // Los listeners de los modales están bien porque los modales están fuera de #app-container.
-            // Pero los formularios de los modales están aquí, así que está bien.
             const productForm = document.getElementById('product-form');
             if (productForm) productForm.addEventListener('submit', window.handleProductForm);
             const inventoryForm = document.getElementById('inventory-form');
             if (inventoryForm) inventoryForm.addEventListener('submit', window.handleInventoryForm);
             const stockForm = document.getElementById('stock-form');
             if (stockForm) stockForm.addEventListener('submit', window.handleStockForm); 
-            // Los nuevos formularios de sesión ya tienen 'onsubmit' en el HTML, así que no se necesitan aquí.
             
             renderApp();
         });
@@ -1519,5 +1845,3 @@
     </script>
 </body>
 </html>
-
-
